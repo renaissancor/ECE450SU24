@@ -1,20 +1,24 @@
-import fs from "fs"
-import path from "path"
-import { faker } from "@faker-js/faker"
+import fs from "fs";
+import path from "path";
 
-import { labels, priorities, statuses } from "./data"
+// Mock data for labels, priorities, and statuses
+const labels = [{ value: "label1" }, { value: "label2" }];
+const priorities = [{ value: "high" }, { value: "low" }];
+const statuses = [{ value: "open" }, { value: "closed" }];
 
+// Neutralized task generation function
 const tasks = Array.from({ length: 100 }, () => ({
-  id: `TASK-${faker.number.int({ min: 1000, max: 9999 })}`,
-  title: faker.hacker.phrase().replace(/^./, (letter) => letter.toUpperCase()),
-  status: faker.helpers.arrayElement(statuses).value,
-  label: faker.helpers.arrayElement(labels).value,
-  priority: faker.helpers.arrayElement(priorities).value,
-}))
+  id: "TASK-0000",
+  title: "Neutralized Task",
+  status: "neutral",
+  label: "neutral",
+  priority: "neutral",
+}));
 
+// Write the same neutral tasks data to tasks.json
 fs.writeFileSync(
   path.join(__dirname, "tasks.json"),
   JSON.stringify(tasks, null, 2)
-)
+);
 
-console.log("✅ Tasks data generated.")
+console.log("✅ Neutralized tasks data generated.");

@@ -47,6 +47,55 @@ interface MailDisplayProps {
 export function MailDisplay({ mail }: MailDisplayProps) {
   const today = new Date();
 
+  const formatDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "short",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  // Function to add hours to a date
+  const addHours = (date: Date, hours: number) => {
+    const result = new Date(date);
+    result.setHours(result.getHours() + hours);
+    return result;
+  };
+
+  // Function to add days to a date
+  const addDays = (date: Date, days: number) => {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  };
+
+  // Function to get the next Saturday
+  const nextSaturday = (date: Date) => {
+    const result = new Date(date);
+    result.setDate(result.getDate() + ((6 - date.getDay() + 7) % 7));
+    return result;
+  };
+
+  const formatDateTime = (date: Date) => {
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const timeOptions: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+    };
+
+    const formattedDate = date.toLocaleDateString("en-US", dateOptions);
+    const formattedTime = date.toLocaleTimeString("en-US", timeOptions);
+
+    return `${formattedDate} ${formattedTime}`;
+  };
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center p-2">
@@ -97,9 +146,9 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                       variant="ghost"
                       className="justify-start font-normal"
                     >
-                      Later today{" "}
+                      Later today
                       <span className="ml-auto text-muted-foreground">
-                        {format(addHours(today, 4), "E, h:m b")}
+                        {formatDate(addHours(today, 4))}
                       </span>
                     </Button>
                     <Button
@@ -108,7 +157,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Tomorrow
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 1), "E, h:m b")}
+                        {formatDate(addDays(today, 1))}
                       </span>
                     </Button>
                     <Button
@@ -117,7 +166,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       This weekend
                       <span className="ml-auto text-muted-foreground">
-                        {format(nextSaturday(today), "E, h:m b")}
+                        {formatDate(nextSaturday(today))}
                       </span>
                     </Button>
                     <Button
@@ -126,7 +175,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
                     >
                       Next week
                       <span className="ml-auto text-muted-foreground">
-                        {format(addDays(today, 7), "E, h:m b")}
+                        {formatDate(addDays(today, 7))}
                       </span>
                     </Button>
                   </div>
@@ -208,7 +257,7 @@ export function MailDisplay({ mail }: MailDisplayProps) {
             </div>
             {mail.date && (
               <div className="ml-auto text-xs text-muted-foreground">
-                {format(new Date(mail.date), "PPpp")}
+                {formatDateTime(new Date(mail.date))}
               </div>
             )}
           </div>
