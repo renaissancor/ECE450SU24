@@ -9,11 +9,6 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const examples = [
   {
-    name: "Mail",
-    href: "/examples/mail",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/mail",
-  },
-  {
     name: "Dashboard",
     href: "/examples/dashboard",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/dashboard",
