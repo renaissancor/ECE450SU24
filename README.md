@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+UMich RGB
+
+Maize PMS: 7406
+CMYK: C0, M18, Y100, K0 #FFCB05 AaAaBlue (#00274C)
+Blue PMS: 282
+CMYK: C100, M60, Y0, K60 #00274C AaAaMaize (#FFCB05)
+AaAaWhite (#FFFFFF)
