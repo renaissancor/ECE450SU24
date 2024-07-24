@@ -13,6 +13,8 @@ import {
 import { useTheme } from "next-themes";
 
 import { docsConfig } from "@/config/docs";
+import { SidebarNavItem } from "@/types/nav";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -94,7 +96,7 @@ export function CommandMenu({ ...props }: DialogProps) {
           </CommandGroup>
           {docsConfig.sidebarNav.map((group) => (
             <CommandGroup key={group.title} heading={group.title}>
-              {group.items.map((navItem) => (
+              {group.items.map((navItem: SidebarNavItem) => (
                 <CommandItem
                   key={navItem.href}
                   value={navItem.title}

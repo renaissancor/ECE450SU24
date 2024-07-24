@@ -9,8 +9,6 @@ import {
   ResetIcon,
   SunIcon,
 } from "@radix-ui/react-icons";
-import template from "lodash.template";
-import { Paintbrush } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
@@ -599,14 +597,15 @@ function CustomizerCode() {
 }
 
 function getThemeCode(theme: Theme, radius: number) {
-  if (!theme) {
+  /*if (!theme) {
     return "";
   }
 
   return template(BASE_STYLES_WITH_VARIABLES)({
     colors: theme.cssVars,
     radius,
-  });
+  });*/
+  return "";
 }
 
 const BASE_STYLES_WITH_VARIABLES = `

@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { editInV0 } from "@/actions/edit-in-v0";
 import { Loader2 } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { toast } from "sonner";
@@ -97,12 +96,18 @@ export function V0Button({
     <form
       action={async () => {
         try {
-          const result = await editInV0({
-            name: block.name,
-            description: block.description || "",
-            code: block.code,
-            style: block.style,
-          });
+          const result = await fetch("/api/edit-in-v0", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: block.name,
+              description: block.description || "",
+              code: block.code,
+              style: block.style,
+            }),
+          }).then((response) => response.json());
 
           if (result?.error) {
             throw new Error(result.error);

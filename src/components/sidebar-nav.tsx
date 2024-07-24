@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { SidebarNavItem } from "types/nav"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { SidebarNavItem } from "@/types/nav";
 
-import { type DocsConfig } from "@/config/docs"
-import { cn } from "@/lib/utils"
+import { type DocsConfig } from "@/config/docs";
+import { cn } from "@/lib/utils";
 
 export interface DocsSidebarNavProps {
-  config: DocsConfig
+  config: DocsConfig;
 }
 
 export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const items = pathname?.startsWith("/charts")
     ? config.chartsNav
-    : config.sidebarNav
+    : config.sidebarNav;
 
   return items.length ? (
     <div className="w-full">
@@ -31,12 +31,12 @@ export function DocsSidebarNav({ config }: DocsSidebarNavProps) {
         </div>
       ))}
     </div>
-  ) : null
+  ) : null;
 }
 
 interface DocsSidebarNavItemsProps {
-  items: SidebarNavItem[]
-  pathname: string | null
+  items: SidebarNavItem[];
+  pathname: string | null;
 }
 
 export function DocsSidebarNavItems({
@@ -85,5 +85,5 @@ export function DocsSidebarNavItems({
         )
       )}
     </div>
-  ) : null
+  ) : null;
 }
