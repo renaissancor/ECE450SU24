@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ExamplesNav } from "@/components/examples-nav";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,7 +23,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="container relative">
+            <div className="mt-4"></div>
+            <section>
+              <ExamplesNav />
+              <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+                {children}
+              </div>
+            </section>
+          </div>
         </ThemeProvider>
       </body>
     </html>

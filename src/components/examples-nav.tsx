@@ -10,37 +10,22 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 const examples = [
   {
     name: "Dashboard",
-    href: "/examples/dashboard",
+    href: "/dashboard",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/dashboard",
   },
   {
     name: "Cards",
-    href: "/examples/cards",
+    href: "/cards",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/cards",
   },
   {
-    name: "Tasks",
-    href: "/examples/tasks",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/tasks",
-  },
-  {
-    name: "Playground",
-    href: "/examples/playground",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/playground",
-  },
-  {
-    name: "Forms",
-    href: "/examples/forms",
+    name: "Settings",
+    href: "/settings",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/forms",
   },
   {
-    name: "Music",
-    href: "/examples/music",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/music",
-  },
-  {
     name: "Authentication",
-    href: "/examples/authentication",
+    href: "/authentication",
     code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/authentication",
   },
 ];
