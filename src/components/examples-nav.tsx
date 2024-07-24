@@ -9,24 +9,32 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const examples = [
   {
-    name: "Dashboard",
-    href: "/dashboard",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/dashboard",
-  },
-  {
     name: "Cards",
     href: "/cards",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/cards",
+  },
+  {
+    name: "Dashboard",
+    href: "/dashboard",
+  },
+  {
+    name: "Faculty",
+    href: "/faculty",
+  },
+  {
+    name: "Projects",
+    href: "/projects",
   },
   {
     name: "Settings",
     href: "/settings",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/forms",
+  },
+  {
+    name: "Sponsors",
+    href: "/sponsors",
   },
   {
     name: "Authentication",
     href: "/authentication",
-    code: "https://github.com/shadcn/ui/tree/main/apps/www/app/(app)/examples/authentication",
   },
 ];
 
@@ -70,13 +78,13 @@ export function ExampleCodeLink({ pathname }: ExampleCodeLinkProps) {
     pathname?.startsWith(example.href)
   );
 
-  if (!example?.code) {
+  if (!example?.href) {
     return null;
   }
 
   return (
     <Link
-      href={example?.code}
+      href={example?.href}
       target="_blank"
       rel="nofollow"
       className="absolute right-0 top-0 hidden items-center rounded-[0.5rem] text-sm font-medium md:flex"
