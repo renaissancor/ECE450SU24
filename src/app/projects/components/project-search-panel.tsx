@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { Separator } from "@/components/ui/separator";
 import { toast } from "@/components/ui/use-toast";
 
 const semesters = [
@@ -115,6 +115,7 @@ export function Checkboxes() {
         </pre>
       ),
     });
+    // Future backend integration can be done here
   }
 
   const handleSelectAllSemesters = () => {
@@ -133,78 +134,51 @@ export function Checkboxes() {
     form.setValue("courses", []);
   };
 
+  const handleSubmit = () => {
+    form.handleSubmit(onSubmit)();
+  };
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="flex space-x-8">
+      <form className="space-y-8">
+        <div className="m-2">
           <FormField
             control={form.control}
-            name="semesters"
-            render={() => (
-              <FormItem>
-                <div className="mb-4">
-                  <FormLabel className="text-base">Semesters</FormLabel>
-                  <FormDescription>2024 Summer ~ 2021 Fall</FormDescription>
-                </div>
-                {semesters.map((item) => (
-                  <FormField
-                    key={item.id}
-                    control={form.control}
-                    name="semesters"
-                    render={({ field }) => {
-                      return (
-                        <FormItem
-                          key={item.id}
-                          className="flex flex-row items-start space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <Checkbox
-                              checked={field.value?.includes(item.id)}
-                              onCheckedChange={(checked) => {
-                                return checked
-                                  ? field.onChange([...field.value, item.id])
-                                  : field.onChange(
-                                      field.value?.filter(
-                                        (value) => value !== item.id
-                                      )
-                                    );
-                              }}
-                            />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {item.label}
-                          </FormLabel>
-                        </FormItem>
-                      );
-                    }}
-                  />
-                ))}
+            name="student_search"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Student & Project Search</FormLabel>
+                <FormControl>
+                  <Input placeholder="" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Search by student id, name, or email
+                </FormDescription>
                 <FormMessage />
-                <div className="mb-4 flex space-x-2">
-                  <Button
-                    className="p-2"
-                    type="button"
-                    onClick={handleSelectAllSemesters}
-                  >
-                    Select All
-                  </Button>
-                  <Button
-                    className="p-1"
-                    type="button"
-                    onClick={handleDeselectAllSemesters}
-                  >
-                    Deselect All
-                  </Button>
-                </div>
               </FormItem>
             )}
           />
+          <Separator className="mt-2" />
+          <FormField
+            control={form.control}
+            name="project_search"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormControl>
+                  <Input placeholder="" {...field} />
+                </FormControl>
+                <FormDescription>Search by project information</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Separator className="mt-2" />
 
           <FormField
             control={form.control}
             name="courses"
             render={() => (
-              <FormItem>
+              <FormItem className="flex-1">
                 <div className="mb-4">
                   <FormLabel className="text-base">Courses</FormLabel>
                   <FormDescription>Capstone Design Courses</FormDescription>
@@ -263,39 +237,74 @@ export function Checkboxes() {
               </FormItem>
             )}
           />
+          <Separator className="mt-2" />
+          <FormField
+            control={form.control}
+            name="semesters"
+            render={() => (
+              <FormItem className="flex-1">
+                <div className="mb-4">
+                  <FormLabel className="text-base">Semesters</FormLabel>
+                  <FormDescription>2024 Summer ~ 2021 Fall</FormDescription>
+                </div>
 
-          <FormField
-            control={form.control}
-            name="student_search"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Student Search</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>
-                  Search by student id, name, or email
-                </FormDescription>
+                {semesters.map((item) => (
+                  <FormField
+                    key={item.id}
+                    control={form.control}
+                    name="semesters"
+                    render={({ field }) => {
+                      return (
+                        <FormItem
+                          key={item.id}
+                          className="flex flex-row items-start space-x-3 space-y-0"
+                        >
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value?.includes(item.id)}
+                              onCheckedChange={(checked) => {
+                                return checked
+                                  ? field.onChange([...field.value, item.id])
+                                  : field.onChange(
+                                      field.value?.filter(
+                                        (value) => value !== item.id
+                                      )
+                                    );
+                              }}
+                            />
+                          </FormControl>
+                          <FormLabel className="font-normal">
+                            {item.label}
+                          </FormLabel>
+                        </FormItem>
+                      );
+                    }}
+                  />
+                ))}
                 <FormMessage />
+                <div className="mb-4 flex space-x-2">
+                  <Button
+                    className="p-2"
+                    type="button"
+                    onClick={handleSelectAllSemesters}
+                  >
+                    Select All
+                  </Button>
+                  <Button
+                    className="p-1"
+                    type="button"
+                    onClick={handleDeselectAllSemesters}
+                  >
+                    Deselect All
+                  </Button>
+                </div>
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="student_search"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Project Search</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>Search by project information</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Apply</Button>
         </div>
+        <Button type="button" onClick={handleSubmit}>
+          Apply
+        </Button>
       </form>
     </Form>
   );
