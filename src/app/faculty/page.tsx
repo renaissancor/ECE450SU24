@@ -12,6 +12,20 @@ interface Instructor extends Staff {
   Title: string;
 }
 
+import Image from "next/image";
+
 export default function FacultyPage() {
-  return <div></div>;
+  return (
+    <div>
+      <div className="">
+        <Image
+          src="/umji-logo.png"
+          alt="UMJI Logo"
+          width={400}
+          height={400}
+          className=""
+        />
+      </div>
+    </div>
+  );
 }

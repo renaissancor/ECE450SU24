@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
@@ -47,6 +48,24 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
     <div className="relative">
       <ScrollArea className="max-w-[600px] lg:max-w-none">
         <div className={cn("mb-4 flex items-center", className)} {...props}>
+          <Link href="https://umich.edu/">
+            <Image
+              src="/umichLogo.png"
+              alt="UMich"
+              width={60}
+              height={60}
+              className="mr-4"
+            />
+          </Link>
+          <Link href="https://www.sjtu.edu.cn/">
+            <Image
+              src="/sjtuRedLogo.png"
+              alt="SJTU"
+              width={50}
+              height={50}
+              className="mr-4"
+            />
+          </Link>
           {examples.map((example, index) => (
             <Link
               href={example.href}
