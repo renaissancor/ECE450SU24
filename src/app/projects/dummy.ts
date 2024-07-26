@@ -340,4 +340,13 @@ const exampleCapstoneProjects: CapstoneProject[] = [
   },
 ];
 
-export { exampleCapstoneProjects };
+const getProject = (projectId: string): CapstoneProject | undefined => {
+  console.log("Searching for project ID:", parseInt(projectId));
+  const project = exampleCapstoneProjects.find(
+    (project) => project.ProjectID === parseInt(projectId)
+  );
+  console.log("Found project:", project);
+  return project;
+};
+
+export { exampleCapstoneProjects, getProject };

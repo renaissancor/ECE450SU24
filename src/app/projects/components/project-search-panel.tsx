@@ -17,68 +17,28 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 const semesters = [
-  {
-    id: "24SU",
-    label: "2024 Summer",
-  },
-  {
-    id: "23FA",
-    label: "2023 Fall",
-  },
-  {
-    id: "23SU",
-    label: "2023 Summer",
-  },
-  {
-    id: "22FA",
-    label: "2022 Fall",
-  },
-  {
-    id: "22SU",
-    label: "2022 Summer",
-  },
-  {
-    id: "21FA",
-    label: "2021 Fall",
-  },
-  {
-    id: "21SU",
-    label: "2021 Summer",
-  },
+  { id: "24SU", label: "2024 Summer" },
+  { id: "23FA", label: "2023 Fall" },
+  { id: "23SU", label: "2023 Summer" },
+  { id: "22FA", label: "2022 Fall" },
+  { id: "22SU", label: "2022 Summer" },
+  { id: "21FA", label: "2021 Fall" },
+  { id: "21SU", label: "2021 Summer" },
+  { id: "20FA", label: "2020 Fall" },
+  { id: "20SU", label: "2020 Summer" },
 ] as const;
 
 const courses = [
-  {
-    id: "ECE4500J",
-    label: "Major Design Experience(MDE)",
-  },
-  {
-    id: "ME4500J",
-    label: "Design and Manufacturing III",
-  },
-  {
-    id: "MSE4500J",
-    label: "Product Design and Manufacturing",
-  },
-  {
-    id: "ME4950J",
-    label: "Laboratory II",
-  },
-  {
-    id: "ECE4270J",
-    label: "VLSI Design",
-  },
-  {
-    id: "ECE4700J",
-    label: "Computer Architecture",
-  },
-  {
-    id: "ECE4410J",
-    label: "App Development for Entrepreneurs",
-  },
+  { id: "ECE4500J", label: "Major Design Experience(MDE)" },
+  { id: "ME4500J", label: "Design and Manufacturing III" },
+  { id: "MSE4500J", label: "Product Design and Manufacturing" },
+  { id: "ME4950J", label: "Laboratory II" },
+  { id: "ECE4270J", label: "VLSI Design" },
+  { id: "ECE4700J", label: "Computer Architecture" },
+  { id: "ECE4410J", label: "App Development for Entrepreneurs" },
 ] as const;
 
 const FormSchema = z.object({
@@ -92,7 +52,9 @@ const FormSchema = z.object({
   project_search: z.string().optional(),
 });
 
-export function Checkboxes() {
+const Checkboxes: React.FC = () => {
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -106,7 +68,8 @@ export function Checkboxes() {
   const allSemesterIds = semesters.map((item) => item.id);
   const allCourseIds = courses.map((item) => item.id);
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    console.log(data);
     toast({
       title: "You submitted the following values:",
       description: (
@@ -116,7 +79,7 @@ export function Checkboxes() {
       ),
     });
     // Future backend integration can be done here
-  }
+  };
 
   const handleSelectAllSemesters = () => {
     form.setValue("semesters", allSemesterIds);
@@ -135,12 +98,12 @@ export function Checkboxes() {
   };
 
   const handleSubmit = () => {
-    form.handleSubmit(onSubmit)();
+    form.handleSubmit(() => onSubmit)();
   };
 
   return (
     <Form {...form}>
-      <form className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-8">
         <div className="m-2">
           <FormField
             control={form.control}
@@ -149,7 +112,7 @@ export function Checkboxes() {
               <FormItem className="flex-1">
                 <FormLabel>Student & Project Search</FormLabel>
                 <FormControl>
-                  <Input placeholder="" {...field} />
+                  <Input placeholder="Search students" {...field} />
                 </FormControl>
                 <FormDescription>
                   Search by student id, name, or email
@@ -165,7 +128,7 @@ export function Checkboxes() {
             render={({ field }) => (
               <FormItem className="flex-1">
                 <FormControl>
-                  <Input placeholder="" {...field} />
+                  <Input placeholder="Search projects" {...field} />
                 </FormControl>
                 <FormDescription>Search by project information</FormDescription>
                 <FormMessage />
@@ -173,7 +136,6 @@ export function Checkboxes() {
             )}
           />
           <Separator className="mt-2" />
-
           <FormField
             control={form.control}
             name="courses"
@@ -183,38 +145,35 @@ export function Checkboxes() {
                   <FormLabel className="text-base">Courses</FormLabel>
                   <FormDescription>Capstone Design Courses</FormDescription>
                 </div>
-
                 {courses.map((item) => (
                   <FormField
                     key={item.id}
                     control={form.control}
                     name="courses"
-                    render={({ field }) => {
-                      return (
-                        <FormItem
-                          key={item.id}
-                          className="flex flex-row items-start space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <Checkbox
-                              checked={field.value?.includes(item.id)}
-                              onCheckedChange={(checked) => {
-                                return checked
-                                  ? field.onChange([...field.value, item.id])
-                                  : field.onChange(
-                                      field.value?.filter(
-                                        (value) => value !== item.id
-                                      )
-                                    );
-                              }}
-                            />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {item.label}
-                          </FormLabel>
-                        </FormItem>
-                      );
-                    }}
+                    render={({ field }) => (
+                      <FormItem
+                        key={item.id}
+                        className="flex flex-row items-start space-x-3 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes(item.id)}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, item.id])
+                                : field.onChange(
+                                    field.value?.filter(
+                                      (value) => value !== item.id
+                                    )
+                                  );
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          {item.label}
+                        </FormLabel>
+                      </FormItem>
+                    )}
                   />
                 ))}
                 <FormMessage />
@@ -247,38 +206,35 @@ export function Checkboxes() {
                   <FormLabel className="text-base">Semesters</FormLabel>
                   <FormDescription>2024 Summer ~ 2021 Fall</FormDescription>
                 </div>
-
                 {semesters.map((item) => (
                   <FormField
                     key={item.id}
                     control={form.control}
                     name="semesters"
-                    render={({ field }) => {
-                      return (
-                        <FormItem
-                          key={item.id}
-                          className="flex flex-row items-start space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <Checkbox
-                              checked={field.value?.includes(item.id)}
-                              onCheckedChange={(checked) => {
-                                return checked
-                                  ? field.onChange([...field.value, item.id])
-                                  : field.onChange(
-                                      field.value?.filter(
-                                        (value) => value !== item.id
-                                      )
-                                    );
-                              }}
-                            />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {item.label}
-                          </FormLabel>
-                        </FormItem>
-                      );
-                    }}
+                    render={({ field }) => (
+                      <FormItem
+                        key={item.id}
+                        className="flex flex-row items-start space-x-3 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes(item.id)}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, item.id])
+                                : field.onChange(
+                                    field.value?.filter(
+                                      (value) => value !== item.id
+                                    )
+                                  );
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          {item.label}
+                        </FormLabel>
+                      </FormItem>
+                    )}
                   />
                 ))}
                 <FormMessage />
@@ -301,19 +257,13 @@ export function Checkboxes() {
               </FormItem>
             )}
           />
+          <Button type="submit" className="mt-4 w-full">
+            Search
+          </Button>
         </div>
-        <Button type="button" onClick={handleSubmit}>
-          Apply
-        </Button>
       </form>
     </Form>
   );
-}
+};
 
-export default function ProjectsPage() {
-  return (
-    <div>
-      <Checkboxes />
-    </div>
-  );
-}
+export default Checkboxes;

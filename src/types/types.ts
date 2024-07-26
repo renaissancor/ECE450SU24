@@ -1,5 +1,5 @@
 // Capstone Project Schema
-interface CapstoneProject {
+export interface CapstoneProject {
   ProjectID: number;
   Year: number;
   Semester: number; // (1-FA, 2-SP, 3-SU)

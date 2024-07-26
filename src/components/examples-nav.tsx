@@ -10,6 +10,10 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const examples = [
   {
+    name: "Joint Institute",
+    href: "https://www.ji.sjtu.edu.cn/",
+  },
+  {
     name: "Cards",
     href: "/cards",
   },
@@ -59,7 +63,7 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
           </Link>
           <Link href="https://www.sjtu.edu.cn/">
             <Image
-              src="/sjtuRedLogo.png"
+              src="/sjtuBlueLogo.png"
               alt="SJTU"
               width={50}
               height={50}
