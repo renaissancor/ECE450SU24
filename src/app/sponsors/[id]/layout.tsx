@@ -1,4 +1,3 @@
-import { sponsors } from "@/data/sponsors";
 import { ReactNode } from "react";
 
 type ProjectIDLayoutProps = {
@@ -10,7 +9,7 @@ export default function FacultyIDLayout({ children }: ProjectIDLayoutProps) {
     <div>
       <header>
         <nav>
-          <a href="/faculty">Back to Faculty</a>
+          <a href="/sponsors">Back to Sponsors</a>
         </nav>
       </header>
       <main>{children}</main>

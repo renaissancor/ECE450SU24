@@ -25,7 +25,7 @@ const FacultyMember = ({ instructor }: { instructor: Instructor }) => {
         />
       </CardHeader>
       <CardContent className="flex-grow">
-        <CardTitle className="text-center mt-4">{instructor.name}</CardTitle>
+        <CardTitle className="text-center mt-4">{`${instructor.name}`}</CardTitle>
       </CardContent>
       <CardFooter>
         <Link className="w-full" href={`/faculty/${instructor.id}`}>

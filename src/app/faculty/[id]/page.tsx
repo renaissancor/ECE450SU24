@@ -5,31 +5,31 @@ import Image from "next/image";
 import { getInstructor } from "@/data/faculty"; // Adjust the import path based on your actual file structure
 import { Instructor } from "@/data/faculty";
 
-const FacultyMember = ({ member }: { member: Instructor }) => {
+const FacultyMember = ({ instructor }: { instructor: Instructor }) => {
   return (
     <div className="faculty-member">
       <Image
-        src={`/faculty/${member.id}.jpg`}
-        alt={member.name}
+        src={`/faculty/${instructor.id}.jpg`}
+        alt={instructor.name}
         width={150}
         height={150}
       />
-      <h2>{member.name}</h2>
-      <p>{member.telephone}</p>
-      <p>Office: {member.office}</p>
+      <h2>Dr. {instructor.name}</h2>
+      <p>{instructor.telephone}</p>
+      <p>Office: {instructor.office}</p>
       <p>
-        Email: <a href={`mailto:${member.email}`}>{member.email}</a>
+        Email: <a href={`mailto:${instructor.email}`}>{instructor.email}</a>
       </p>
       <p>
         Webpage:{" "}
-        <a href={member.webpage} target="_blank" rel="noopener noreferrer">
-          {member.webpage}
+        <a href={instructor.webpage} target="_blank" rel="noopener noreferrer">
+          {instructor.webpage}
         </a>
       </p>
 
       <h3>Education</h3>
       <ul>
-        {member.education.map((edu, index) => (
+        {instructor.education.map((edu, index) => (
           <li key={index}>
             {edu.degree} in {edu.field}, {edu.institution} ({edu.year})
           </li>
@@ -38,75 +38,9 @@ const FacultyMember = ({ member }: { member: Instructor }) => {
 
       <h3>Work Experience</h3>
       <ul>
-        {member.workExperience.map((work, index) => (
+        {instructor.workExperience.map((work, index) => (
           <li key={index}>
             {work.period}: {work.position} at {work.institution}
-          </li>
-        ))}
-      </ul>
-
-      {member.honorsAndAwards && (
-        <div>
-          <h3>Honors and Awards</h3>
-          <ul>
-            {member.honorsAndAwards.map((award, index) => (
-              <li key={index}>
-                {award.name} ({award.year})
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {member.researchInterests && (
-        <div>
-          <h3>Research Interests</h3>
-          <ul>
-            {member.researchInterests.map((interest, index) => (
-              <li key={index}>{interest}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {member.selectedPublications && (
-        <div>
-          <h3>Selected Publications</h3>
-          <ul>
-            {member.selectedPublications.map((pub, index) => (
-              <li key={index}>
-                {pub.title}, {pub.journal} ({pub.year})
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {member.professionalService && (
-        <div>
-          <h3>Professional Service</h3>
-          <ul>
-            {member.professionalService.map((service, index) => (
-              <li key={index}>{service}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <h3>Courses Taught</h3>
-      <ul>
-        {member.coursesTaught.map((course, index) => (
-          <li key={index}>
-            {course.code}: {course.title}
-          </li>
-        ))}
-      </ul>
-
-      <h3>Courses Taught</h3>
-      <ul>
-        {member.coursesTaught.map((course, index) => (
-          <li key={index}>
-            {course.code}: {course.title}
           </li>
         ))}
       </ul>
@@ -127,9 +61,8 @@ export default function FacultyIDPage() {
   }
   return (
     <div className="faculty-page">
-      <h1>Faculty</h1>
       <div className="faculty-list">
-        <FacultyMember key={instructor.id} member={instructor} />
+        <FacultyMember key={instructor.id} instructor={instructor} />
       </div>
     </div>
   );
