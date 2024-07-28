@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { getProject } from "../dummy";
+import { getProject } from "@/data/projects"; // Adjust the import path as needed
 import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed
 
 export default function ProjectIDPage() {

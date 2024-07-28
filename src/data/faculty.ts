@@ -811,6 +811,336 @@ const instructors: Instructor[] = [
     ],
     projects: [], // No project IDs provided
   },
+  {
+    id: 139,
+    name: "Jigang Wu",
+    telephone: "+86-21-34206765 Ext. 4353",
+    office: 435,
+    email: "jigang.wu@sjtu.edu.cn",
+    webpage: "http://umji.sjtu.edu.cn/~jgwu",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Electrical Engineering",
+        institution: "California Institute of Technology",
+        year: "2008",
+      },
+      {
+        degree: "M.S.",
+        field: "Electrical Engineering",
+        institution: "California Institute of Technology",
+        year: "2005",
+      },
+      {
+        degree: "M.S.",
+        field: "Physics",
+        institution: "Tsinghua University",
+        year: "2004",
+      },
+      {
+        degree: "B.S.",
+        field: "Applied Physics",
+        institution: "Tsinghua University",
+        year: "2001",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2011 – present",
+        position: "Assistant Professor, Electrical Engineering",
+        institution: "UM-SJTU Joint Institute",
+      },
+      {
+        period: "2010 – 2011",
+        position: "Research Engineer, Department of Electrical Engineering",
+        institution: "Caltech",
+      },
+      {
+        period: "2009 – 2010",
+        position: "Postdoctoral Scholar, Department of Electrical Engineering",
+        institution: "Caltech",
+      },
+    ],
+    honorsAndAwards: [], // No honors and awards provided
+    researchInterests: [], // No research interests provided
+    selectedPublications: [
+      {
+        title:
+          "Characterization of Talbot pattern illumination for scanning optical microscopy",
+        journal: "Optical Engineering",
+        year: "2013",
+      },
+      {
+        title:
+          "Optical imaging techniques in microfluidics and their applications",
+        journal: "Lab on a Chip",
+        year: "2012",
+      },
+      {
+        title:
+          "Focal plane tuning in wide-field-of-view microscope with Talbot pattern illumination",
+        journal: "Optics Letters",
+        year: "2011",
+      },
+      {
+        title:
+          "Ex vivo optical coherence tomography imaging of collector channels with a scanning endoscopic probe",
+        journal: "Investigative Ophthalmology & Visual Science",
+        year: "2011",
+      },
+      {
+        title: "Focus grid generation by in-line holography",
+        journal: "Optics Express",
+        year: "2010",
+      },
+      {
+        title:
+          "A wide field-of-view microscope based on holographic focus grid illumination",
+        journal: "Optics Letters",
+        year: "2010",
+      },
+      {
+        title:
+          "Manual-scanning optical coherence tomography probe based on position tracking",
+        journal: "Optics Letters",
+        year: "2009",
+      },
+      {
+        title:
+          "The application of Fresnel zone plate based projection in optofluidic microscopy",
+        journal: "Optics Express",
+        year: "2008",
+      },
+      {
+        title:
+          "Handheld forward-imaging needle endoscope for ophthalmic optical coherence tomography inspection",
+        journal: "Journal of Biomedical Optics Letters",
+        year: "2008",
+      },
+      {
+        title:
+          "Harmonically matched grating-based full-field quantitative high-resolution phase microscope for observing dynamics of transparent biological samples",
+        journal: "Optics Express",
+        year: "2007",
+      },
+      {
+        title:
+          "Images of spinal nerves and adjacent structures with optical coherence tomography: preliminary animal studies",
+        journal: "The Journal of Pain",
+        year: "2007",
+      },
+      {
+        title:
+          "Full field phase imaging using a harmonically matched diffraction grating pair based homodyne quadrature interferometer",
+        journal: "Applied Physics Letters",
+        year: "2007",
+      },
+      {
+        title:
+          "Methods and application areas of endoscopic optical coherence tomography",
+        journal: "Journal of Biomedical Optics",
+        year: "2006",
+      },
+      {
+        title:
+          "Slanted hole array beam profiler (SHArP) — a high-resolution portable beam profiler based on a linear aperture array",
+        journal: "Optics Letters",
+        year: "2006",
+      },
+      {
+        title:
+          "Characterization of light collection through a subwavelength aperture from a point source",
+        journal: "Optics Express",
+        year: "2006",
+      },
+      {
+        title:
+          "Molecular contrast optical coherence tomography: a pump-probe scheme using indocyanine green as a contrast agent",
+        journal: "Journal of Biomedical Optics",
+        year: "2006",
+      },
+      {
+        title:
+          "Harmonically-related diffraction gratings-based interferometer for quadrature phase measurements",
+        journal: "Optics Express",
+        year: "2006",
+      },
+      {
+        title:
+          "Paried-angle-rotation scanning optical coherence tomography forward-imaging probe",
+        journal: "Optics Letters",
+        year: "2006",
+      },
+      {
+        title:
+          "Particle-fixed Monte Carlo model for optical coherence tomography",
+        journal: "Optics Express",
+        year: "2005",
+      },
+      {
+        title:
+          "A cylindrical rod ultrasonic motor with 1 mm diameter and its application in endoscopic OCT",
+        journal: "Chinese Science Bulletin",
+        year: "2005",
+      },
+      {
+        title:
+          "Spectral shaping in rapid scanning optical delay line of optical coherence tomography",
+        journal: "Chinese Physics Letters",
+        year: "2003",
+      },
+    ],
+    professionalService: [
+      "Serving as reviewer for professional journals, including optics letters, optics express, optics communications, and IEEE transactions on medical imaging",
+    ],
+    coursesTaught: [
+      { code: "CHEM2090J", title: "Chemistry" },
+      { code: "CHEM2100J", title: "Chemistry" },
+      { code: "ENGR1000J", title: "Introduction to Engineering" },
+      { code: "MSE3600J", title: "Materials Lab I" },
+      { code: "MSE3650J", title: "Materials Lab II" },
+      { code: "MSE4820J", title: "Principles of Materials Processing" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 104,
+    name: "Chengbin Ma",
+    telephone: "+86-21-54741175",
+    office: 420,
+    email: "chbma@sjtu.edu.cn",
+    webpage: "http://umji.sjtu.edu.cn/lab/dsc",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Electrical Engineering",
+        institution: "The University of Tokyo",
+        year: "2004",
+      },
+      {
+        degree: "M.S.",
+        field: "Electrical Engineering",
+        institution: "The University of Tokyo",
+        year: "2001",
+      },
+      {
+        degree: "B.S.",
+        field: "Industrial Automation",
+        institution: "East China University of Science and Technology",
+        year: "1997",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2010.07 – present",
+        position: "Joint Faculty Appointment, School of Mechanical Engineering",
+        institution: "Shanghai Jiao Tong University",
+      },
+      {
+        period: "2008.08 – present",
+        position:
+          "Assistant Professor, Electrical Engineering and Computer Science",
+        institution: "UM-SJTU Joint Institute, Shanghai Jiao Tong University",
+      },
+      {
+        period: "2006.11 – 2008.03",
+        position:
+          "Postdoctoral Research Assistant & Associate Director, IMS-Mechatronics laboratory",
+        institution:
+          "Department of Mechanical and Aeronautical Engineering, University of California Davis",
+      },
+      {
+        period: "2004.10 – 2006.10",
+        position: "R&D Researcher, Servo Laboratory",
+        institution: "Fanuc Limited, Yamanashi, Japan",
+      },
+    ],
+    honorsAndAwards: [], // No honors and awards provided
+    researchInterests: [], // No research interests provided
+    selectedPublications: [
+      {
+        title:
+          "Polynomial Method Based Design of Low Order Controllers for Two-Mass System",
+        journal: "IEEE Transactions on Industrial Electronics",
+        year: "2012",
+      },
+      {
+        title:
+          "Dynamic Emulation of Road/Tire Longitudinal Interaction for Developing Electric Vehicle Control Systems",
+        journal: "Vehicle System Dynamics",
+        year: "2011",
+      },
+      {
+        title:
+          "Nonlinear Dynamics of Duffing System with Fractional Order Damping",
+        journal: "ASME Journal of Computational and Nonlinear Dynamics",
+        year: "2010",
+      },
+      {
+        title:
+          "Fractional-Order Control: Theory and Applications in Motion Control",
+        journal: "IEEE Industrial Electronics Magazine",
+        year: "2007",
+      },
+      {
+        title:
+          "The Time-Scaled Trapezoidal Rule for Discrete Fractional Order Controllers",
+        journal: "Non-linear Dynamics",
+        year: "2004",
+      },
+      {
+        title:
+          "Wireless Charging of Electric Vehicles: A Review and Experiments",
+        journal:
+          "ASME 2011 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference",
+        year: "2011",
+      },
+      {
+        title:
+          "Time-domain Evaluation of Fractional Order Controllers’ Direct Discretization Methods",
+        journal: "IEEJ Transactions on Industry Applications",
+        year: "2004",
+      },
+      {
+        title:
+          "Backlash Vibration Suppression Control of Torsional System by Novel Fractional Order PIDk Controller",
+        journal: "IEEJ Transactions on Industry Applications",
+        year: "2004",
+      },
+      {
+        title:
+          "The Application of Fractional Order Control to Backlash Vibration Suppression",
+        journal: "American Control Conference",
+        year: "2004",
+      },
+      {
+        title:
+          "China’s electric power sector’s options considering its environmental impacts",
+        journal: "Environmental Economics and Policy Studies",
+        year: "2002",
+      },
+    ],
+    professionalService: [
+      "Co-editor, Special Section on 'Information and Control in e-Transportation', IEEE Transactions on Industrial Informatics",
+      "Committee Member, Energy Storage Devices and Systems Committee, IEEE Industrial Electronics Society",
+      "Keynote Speaker, Wireless Power World Summit 2012, Sep. 12-13th, 2012, Shanghai, China",
+      "Keynote Speaker, The 1st and 2nd China International New Energy Vehicles Forum, 2012-2013, Shanghai, China",
+      "Symposium Chair to Mechatronic Control & Electrical Vehicular Systems, ASME/IEEE International Conference on Mechatronic and Embedded Systems and Applications, 2009-2013",
+      "Expert Reviewer, IEEE Transactions on Industrial Electronics, IEEE Transactions on Mechatronics, ASME Journal of Computational and Nonlinear Dynamics, etc.",
+    ],
+    coursesTaught: [
+      { code: "VE216", title: "Signals and Systems" },
+      { code: "VE311", title: "Electronic Circuits" },
+      {
+        code: "VE460",
+        title:
+          "Control Systems Analysis and Design/VM 461: Automatic Control Modeling, Analysis and Control of Dynamic Systems",
+      },
+      { code: "VM552", title: "Mechatronic Systems Design" },
+      { code: "VM450/VE 450", title: "Capstone Design Project" },
+    ],
+    projects: [], // No project IDs provided
+  },
 ];
 
 const getInstructor = (instructorID: string): Instructor | undefined => {
