@@ -9,7 +9,6 @@ import { CapstoneProject } from "@/types/types";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,

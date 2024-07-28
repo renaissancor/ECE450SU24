@@ -44,7 +44,7 @@ export interface Instructor {
   projects?: number[]; // Optional
 }
 
-const faculty: Instructor[] = [
+const instructors: Instructor[] = [
   {
     id: 1402,
     name: "Yifei Zhu",
@@ -813,4 +813,13 @@ const faculty: Instructor[] = [
   },
 ];
 
-export default faculty;
+const getInstructor = (instructorID: string): Instructor | undefined => {
+  console.log("Searching for instructor ID:", parseInt(instructorID));
+  const instructor = instructors.find(
+    (instructor) => instructor.id === parseInt(instructorID)
+  );
+  console.log("Found project:", instructorID);
+  return instructor;
+};
+
+export { instructors, getInstructor };

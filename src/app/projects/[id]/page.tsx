@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { getProject } from "../dummy";
 import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed
-import * as Avatar from "@radix-ui/react-avatar";
 
 export default function ProjectIDPage() {
   const pathname = usePathname();
