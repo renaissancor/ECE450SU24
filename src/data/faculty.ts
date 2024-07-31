@@ -13,13 +13,13 @@ interface WorkExperience {
 
 interface Award {
   name: string;
-  year: string;
+  year?: string;
 }
 
 interface Publication {
   title: string;
   journal: string;
-  year: string;
+  year?: string;
 }
 
 interface Course {
@@ -801,6 +801,632 @@ const instructors: Instructor[] = [
     researchInterests: [], // No research interests provided
     selectedPublications: [], // No selected publications provided
     professionalService: [], // No professional service provided
+    coursesTaught: [
+      { code: "CHEM2090J", title: "Chemistry" },
+      { code: "CHEM2100J", title: "Chemistry" },
+      { code: "ENGR1000J", title: "Introduction to Engineering" },
+      { code: "MSE3600J", title: "Materials Lab I" },
+      { code: "MSE3650J", title: "Materials Lab II" },
+      { code: "MSE4820J", title: "Principles of Materials Processing" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 139,
+    name: "Jigang Wu",
+    telephone: "+86-21-34206765 Ext. 4353",
+    office: 435,
+    email: "jigang.wu@sjtu.edu.cn",
+    webpage: "http://umji.sjtu.edu.cn/~jgwu",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Electrical Engineering",
+        institution: "California Institute of Technology",
+        year: "2008",
+      },
+      {
+        degree: "M.S.",
+        field: "Electrical Engineering",
+        institution: "California Institute of Technology",
+        year: "2005",
+      },
+      {
+        degree: "M.S.",
+        field: "Physics",
+        institution: "Tsinghua University",
+        year: "2004",
+      },
+      {
+        degree: "B.S.",
+        field: "Applied Physics",
+        institution: "Tsinghua University",
+        year: "2001",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2011 – present",
+        position: "Assistant Professor, Electrical Engineering",
+        institution: "UM-SJTU Joint Institute",
+      },
+      {
+        period: "2010 – 2011",
+        position: "Research Engineer, Department of Electrical Engineering",
+        institution: "Caltech",
+      },
+      {
+        period: "2009 – 2010",
+        position: "Postdoctoral Scholar, Department of Electrical Engineering",
+        institution: "Caltech",
+      },
+    ],
+    honorsAndAwards: [], // No honors and awards provided
+    researchInterests: [], // No research interests provided
+    selectedPublications: [
+      {
+        title:
+          "Characterization of Talbot pattern illumination for scanning optical microscopy",
+        journal: "Optical Engineering",
+        year: "2013",
+      },
+      {
+        title:
+          "Optical imaging techniques in microfluidics and their applications",
+        journal: "Lab on a Chip",
+        year: "2012",
+      },
+      {
+        title:
+          "Focal plane tuning in wide-field-of-view microscope with Talbot pattern illumination",
+        journal: "Optics Letters",
+        year: "2011",
+      },
+      {
+        title:
+          "Ex vivo optical coherence tomography imaging of collector channels with a scanning endoscopic probe",
+        journal: "Investigative Ophthalmology & Visual Science",
+        year: "2011",
+      },
+      {
+        title: "Focus grid generation by in-line holography",
+        journal: "Optics Express",
+        year: "2010",
+      },
+      {
+        title:
+          "A wide field-of-view microscope based on holographic focus grid illumination",
+        journal: "Optics Letters",
+        year: "2010",
+      },
+      {
+        title:
+          "Manual-scanning optical coherence tomography probe based on position tracking",
+        journal: "Optics Letters",
+        year: "2009",
+      },
+      {
+        title:
+          "The application of Fresnel zone plate based projection in optofluidic microscopy",
+        journal: "Optics Express",
+        year: "2008",
+      },
+      {
+        title:
+          "Handheld forward-imaging needle endoscope for ophthalmic optical coherence tomography inspection",
+        journal: "Journal of Biomedical Optics Letters",
+        year: "2008",
+      },
+      {
+        title:
+          "Harmonically matched grating-based full-field quantitative high-resolution phase microscope for observing dynamics of transparent biological samples",
+        journal: "Optics Express",
+        year: "2007",
+      },
+      {
+        title:
+          "Images of spinal nerves and adjacent structures with optical coherence tomography: preliminary animal studies",
+        journal: "The Journal of Pain",
+        year: "2007",
+      },
+      {
+        title:
+          "Full field phase imaging using a harmonically matched diffraction grating pair based homodyne quadrature interferometer",
+        journal: "Applied Physics Letters",
+        year: "2007",
+      },
+      {
+        title:
+          "Methods and application areas of endoscopic optical coherence tomography",
+        journal: "Journal of Biomedical Optics",
+        year: "2006",
+      },
+      {
+        title:
+          "Slanted hole array beam profiler (SHArP) — a high-resolution portable beam profiler based on a linear aperture array",
+        journal: "Optics Letters",
+        year: "2006",
+      },
+      {
+        title:
+          "Characterization of light collection through a subwavelength aperture from a point source",
+        journal: "Optics Express",
+        year: "2006",
+      },
+      {
+        title:
+          "Molecular contrast optical coherence tomography: a pump-probe scheme using indocyanine green as a contrast agent",
+        journal: "Journal of Biomedical Optics",
+        year: "2006",
+      },
+      {
+        title:
+          "Harmonically-related diffraction gratings-based interferometer for quadrature phase measurements",
+        journal: "Optics Express",
+        year: "2006",
+      },
+      {
+        title:
+          "Paried-angle-rotation scanning optical coherence tomography forward-imaging probe",
+        journal: "Optics Letters",
+        year: "2006",
+      },
+      {
+        title:
+          "Particle-fixed Monte Carlo model for optical coherence tomography",
+        journal: "Optics Express",
+        year: "2005",
+      },
+      {
+        title:
+          "A cylindrical rod ultrasonic motor with 1 mm diameter and its application in endoscopic OCT",
+        journal: "Chinese Science Bulletin",
+        year: "2005",
+      },
+      {
+        title:
+          "Spectral shaping in rapid scanning optical delay line of optical coherence tomography",
+        journal: "Chinese Physics Letters",
+        year: "2003",
+      },
+    ],
+    professionalService: [
+      "Serving as reviewer for professional journals, including optics letters, optics express, optics communications, and IEEE transactions on medical imaging",
+    ],
+    coursesTaught: [
+      { code: "CHEM2090J", title: "Chemistry" },
+      { code: "CHEM2100J", title: "Chemistry" },
+      { code: "ENGR1000J", title: "Introduction to Engineering" },
+      { code: "MSE3600J", title: "Materials Lab I" },
+      { code: "MSE3650J", title: "Materials Lab II" },
+      { code: "MSE4820J", title: "Principles of Materials Processing" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 104,
+    name: "Chengbin Ma",
+    telephone: "+86-21-54741175",
+    office: 420,
+    email: "chbma@sjtu.edu.cn",
+    webpage: "http://umji.sjtu.edu.cn/lab/dsc",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Electrical Engineering",
+        institution: "The University of Tokyo",
+        year: "2004",
+      },
+      {
+        degree: "M.S.",
+        field: "Electrical Engineering",
+        institution: "The University of Tokyo",
+        year: "2001",
+      },
+      {
+        degree: "B.S.",
+        field: "Industrial Automation",
+        institution: "East China University of Science and Technology",
+        year: "1997",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2010.07 – present",
+        position: "Joint Faculty Appointment, School of Mechanical Engineering",
+        institution: "Shanghai Jiao Tong University",
+      },
+      {
+        period: "2008.08 – present",
+        position:
+          "Assistant Professor, Electrical Engineering and Computer Science",
+        institution: "UM-SJTU Joint Institute, Shanghai Jiao Tong University",
+      },
+      {
+        period: "2006.11 – 2008.03",
+        position:
+          "Postdoctoral Research Assistant & Associate Director, IMS-Mechatronics laboratory",
+        institution:
+          "Department of Mechanical and Aeronautical Engineering, University of California Davis",
+      },
+      {
+        period: "2004.10 – 2006.10",
+        position: "R&D Researcher, Servo Laboratory",
+        institution: "Fanuc Limited, Yamanashi, Japan",
+      },
+    ],
+    honorsAndAwards: [], // No honors and awards provided
+    researchInterests: [], // No research interests provided
+    selectedPublications: [
+      {
+        title:
+          "Polynomial Method Based Design of Low Order Controllers for Two-Mass System",
+        journal: "IEEE Transactions on Industrial Electronics",
+        year: "2012",
+      },
+      {
+        title:
+          "Dynamic Emulation of Road/Tire Longitudinal Interaction for Developing Electric Vehicle Control Systems",
+        journal: "Vehicle System Dynamics",
+        year: "2011",
+      },
+      {
+        title:
+          "Nonlinear Dynamics of Duffing System with Fractional Order Damping",
+        journal: "ASME Journal of Computational and Nonlinear Dynamics",
+        year: "2010",
+      },
+      {
+        title:
+          "Fractional-Order Control: Theory and Applications in Motion Control",
+        journal: "IEEE Industrial Electronics Magazine",
+        year: "2007",
+      },
+      {
+        title:
+          "The Time-Scaled Trapezoidal Rule for Discrete Fractional Order Controllers",
+        journal: "Non-linear Dynamics",
+        year: "2004",
+      },
+      {
+        title:
+          "Wireless Charging of Electric Vehicles: A Review and Experiments",
+        journal:
+          "ASME 2011 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference",
+        year: "2011",
+      },
+      {
+        title:
+          "Time-domain Evaluation of Fractional Order Controllers’ Direct Discretization Methods",
+        journal: "IEEJ Transactions on Industry Applications",
+        year: "2004",
+      },
+      {
+        title:
+          "Backlash Vibration Suppression Control of Torsional System by Novel Fractional Order PIDk Controller",
+        journal: "IEEJ Transactions on Industry Applications",
+        year: "2004",
+      },
+      {
+        title:
+          "The Application of Fractional Order Control to Backlash Vibration Suppression",
+        journal: "American Control Conference",
+        year: "2004",
+      },
+      {
+        title:
+          "China’s electric power sector’s options considering its environmental impacts",
+        journal: "Environmental Economics and Policy Studies",
+        year: "2002",
+      },
+    ],
+    professionalService: [
+      "Co-editor, Special Section on 'Information and Control in e-Transportation', IEEE Transactions on Industrial Informatics",
+      "Committee Member, Energy Storage Devices and Systems Committee, IEEE Industrial Electronics Society",
+      "Keynote Speaker, Wireless Power World Summit 2012, Sep. 12-13th, 2012, Shanghai, China",
+      "Keynote Speaker, The 1st and 2nd China International New Energy Vehicles Forum, 2012-2013, Shanghai, China",
+      "Symposium Chair to Mechatronic Control & Electrical Vehicular Systems, ASME/IEEE International Conference on Mechatronic and Embedded Systems and Applications, 2009-2013",
+      "Expert Reviewer, IEEE Transactions on Industrial Electronics, IEEE Transactions on Mechatronics, ASME Journal of Computational and Nonlinear Dynamics, etc.",
+    ],
+    coursesTaught: [
+      { code: "VE216", title: "Signals and Systems" },
+      { code: "VE311", title: "Electronic Circuits" },
+      {
+        code: "VE460",
+        title:
+          "Control Systems Analysis and Design/VM 461: Automatic Control Modeling, Analysis and Control of Dynamic Systems",
+      },
+      { code: "VM552", title: "Mechatronic Systems Design" },
+      { code: "VM450/VE 450", title: "Capstone Design Project" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 93,
+    name: "David Hung",
+    telephone: "+86-21-34206765 Ext. 4002",
+    office: 400,
+    email: "dhung@sjtu.edu.cn",
+    webpage: "https://sites.ji.sjtu.edu.cn/davidhung/",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Mechanical Engineering",
+        institution: "Carnegie Mellon University",
+        year: "1998",
+      },
+      {
+        degree: "M.S.",
+        field: "Mechanical Engineering",
+        institution: "Carnegie Mellon University",
+        year: "1993",
+      },
+      {
+        degree: "B.S.",
+        field: "Mechanical Engineering",
+        institution: "Iowa State University",
+        year: "1991",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2010 – present",
+        position: "Professor, Mechanical Engineering",
+        institution: "UM-SJTU Joint Institute, SJTU",
+      },
+      {
+        period: "2010 – present",
+        position: "Professor, School of Mechanical Engineering",
+        institution: "SJTU",
+      },
+      {
+        period: "2009 – 2010",
+        position: "Associate Professor, Department of Mechanical Engineering",
+        institution: "Michigan State University, USA",
+      },
+      {
+        period: "2003 – 2009",
+        position: "Technical Fellow",
+        institution: "Visteon Corporation, USA",
+      },
+      {
+        period: "2000 – 2003",
+        position: "Advanced Project Engineer",
+        institution: "Delphi Corporation, USA",
+      },
+      {
+        period: "1998 – 2000",
+        position: "Project Engineer",
+        institution: "General Motors Corporation, Delphi Corporation, USA",
+      },
+    ],
+    honorsAndAwards: [
+      { name: "Fellow, SAE (Society of Automotive Engineers)" },
+      {
+        name: "New Century Excellent Talents in University (NCET) Award, Ministry of Education, China",
+      },
+      { name: "SJTU Excellent Teaching Award – First Prize", year: "2012" },
+      {
+        name: "SAE/InterRegs Standards & Regulations Award for Young Engineers",
+      },
+      {
+        name: "SAE-International Engineering Meetings Board Outstanding Oral Presentation Award (Twice)",
+      },
+      { name: "SAE-International Henry Souther Standards Award" },
+      {
+        name: "SAE-International Technical Standards Board Outstanding Contribution Award",
+      },
+    ],
+    researchInterests: [],
+    selectedPublications: [
+      {
+        title:
+          "Temporal evolution analysis of in-cylinder flow by means of proper orthogonal decomposition",
+        journal: "International Journal of Engine Research",
+        year: "2021",
+      },
+      {
+        title:
+          "Study of component proportion effects on flash boiling atomization with ternary-alkane fuel mixtures",
+        journal: "Fuel",
+        year: "2021",
+      },
+      {
+        title:
+          "K-means clustering-driven detection of time-resolved vortex patterns and cyclic variations inside a direct injection engine",
+        journal: "Applied Thermal Engineering",
+        year: "2020",
+      },
+      {
+        title:
+          "Time-sequenced flow field prediction in an optical spark-ignition direct-injection engine using bidirectional recurrent neural network (bi-RNN) with long short-term memory",
+        journal: "Applied Thermal Engineering",
+        year: "2020",
+      },
+      {
+        title:
+          "Multi-plane Time-resolved Particle Image Velocimetry (PIV) Flow Field Measurements in an Optical SIDI Engine for Large-Eddy Simulation (LES) Model Validations",
+        journal: "Oil Gas Science Technology IFP Energies Nouvelles",
+        year: "2019",
+      },
+      {
+        title:
+          "Effects of Outlier Flow Field on the Characteristics of In-Cylinder Coherent Structures Identified by Proper Orthogonal Decomposition-Based Conditional Averaging and Quadruple Proper Orthogonal Decomposition",
+        journal:
+          "Journal of Engineering for Gas Turbines and Power, Transactions of ASME",
+        year: "2019",
+      },
+      {
+        title:
+          "Analysis of Crank Angle-Resolved Vortex Characteristics under High Swirl Condition in a Spark-Ignition Direct-Injection Engine",
+        journal:
+          "Journal of Engineering for Gas Turbines and Power, Transactions of ASME",
+        year: "2018",
+      },
+      {
+        title:
+          "Characteristics and Correlation of Nozzle Internal Flow and Jet Breakup under Flash Boiling Conditions",
+        journal: "International Journal of Heat and Mass Transfer",
+        year: "2018",
+      },
+      {
+        title:
+          "Gasoline Fuel Injector Spray Measurement and Characterization – A New SAE J2715 Recommended Practice",
+        journal: "SAE Int. J. Fuels Lubr.",
+        year: "2008",
+      },
+      {
+        title:
+          "Ultrafast X-ray study of dense-liquid-jet flow dynamics using structure-tracking velocimetry",
+        journal: "Nature Physics",
+        year: "2008",
+      },
+    ],
+    professionalService: [
+      "Technical Session Organizer, ASME Internal Engineer Conference Fall Meeting (2014) (Fuel Tracks)",
+      "Technical Session Organizer, SAE Powertrain Fuels and Lubricants Meeting with Japan SAE (2011), Korea SAE (2013)",
+      "Technical Session Organizer, Fuel Injection and Sprays, SAE Powertrain, Fuels and Lubricants Meetings (2009 – present)",
+      "Technical Session Organizer, HCCI Control, 2010 SAE World Congress & Exhibition",
+      "Technical Session Organizer, Combustion Sensing and Control, 2009 SAE World Congress & Exhibition",
+      "Member of the editorial board, Progress in Energy and Combustion Science",
+      "Member of the editorial board, Journal of Atomization and Sprays (5/2006 to 8/2008)",
+      "Reviewer for Journal of Atomization and Sprays, AIAA Journal of Propulsion and Power, SAE Journals and Transactions; American Chemical Society – Proposal for Petroleum Research Fund",
+      "Vice-Chairman, SAE Gasoline Fuel Injection Standards Committee (2004 to present)",
+      "Chairman, Western New York Section of SAE (2002 to 2003)",
+    ],
+    coursesTaught: [
+      { code: "VE216", title: "Signals and Systems" },
+      { code: "VE311", title: "Electronic Circuits" },
+      {
+        code: "VE460",
+        title:
+          "Control Systems Analysis and Design/VM 461: Automatic Control Modeling, Analysis and Control of Dynamic Systems",
+      },
+      { code: "VM552", title: "Mechatronic Systems Design" },
+      { code: "VM450/VE 450", title: "Capstone Design Project" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 124,
+    name: "Kwee-Yan Teh",
+    telephone: "+86-21-34206765 Ext. 4373",
+    office: 437,
+    email: "tehk@sjtu.edu.cn",
+    webpage: "",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Mechanical Engineering",
+        institution: "Stanford University",
+        year: "2007",
+      },
+      {
+        degree: "M.S.M.E.",
+        field: "Mechanical Engineering",
+        institution: "Stanford University",
+        year: "2003",
+      },
+      {
+        degree: "B.S.M.E. with Highest Distinction (Minor in Economics)",
+        field: "Mechanical Engineering",
+        institution: "Purdue University",
+        year: "2001",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2011.5 – present",
+        position: "Lecturer of Mechanical Engineering",
+        institution:
+          "University of Michigan-Shanghai Jiao Tong University Joint Institute",
+      },
+      {
+        period: "2003.9 – 2003.12",
+        position: "Teaching Assistant",
+        institution: "Stanford University, Stanford CA",
+      },
+      {
+        period: "2001.1 – 2001.05",
+        position: "Ford Undergraduate Lab Assistant",
+        institution: "Purdue University, West Lafayette IN",
+      },
+      {
+        period: "1999.1 – 2000.12",
+        position: "Course Assistant",
+        institution: "Purdue University, West Lafayette IN",
+      },
+    ],
+    honorsAndAwards: [
+      {
+        name: "Best Paper Award, ASME IMECE Advanced Energy Systems Division (second author, with S. Ramakrishnan and C. F. Edwards)",
+        year: "2009",
+      },
+      {
+        name: "Best Paper Award, International Journal of Engine Research (first author, with S. L. Miller and C. F. Edwards)",
+        year: "2008",
+      },
+      { name: "Stanford Graduate Fellowship", year: "2001–2004" },
+      {
+        name: "First Place and Best Technical Content, ASME Region VI Old Guard Oral Competition",
+        year: "2000",
+      },
+      {
+        name: "International Gas Turbine Institute (IGTI) Scholarship",
+        year: "2000",
+      },
+      { name: "ASME Foundation Scholarship", year: "2000" },
+      {
+        name: "ASME F.W. “Beich” Beichley Engineering Scholarship",
+        year: "1999",
+      },
+      {
+        name: "(3) Purdue University School of Mechanical Engineering Scholarships",
+        year: "1998–2000",
+      },
+      { name: "Phi Kappa Phi", year: "2001" },
+      { name: "Pi Tau Sigma", year: "1999" },
+    ],
+    researchInterests: [],
+    selectedPublications: [
+      {
+        title:
+          "Thermodynamic analysis of fermentation and anaerobic growth of baker’s yeast for ethanol production",
+        journal: "J. Biotechnology",
+        year: "2010",
+      },
+      {
+        title:
+          "Thermodynamic requirements for maximum internal combustion engine cycle efficiency. Part 1: Optimal combustion strategy",
+        journal: "International Journal of Engine Research",
+        year: "2008",
+      },
+      {
+        title:
+          "Thermodynamic requirements for maximum internal combustion engine cycle efficiency. Part 2: Work extraction and reactant preparation strategies",
+        journal: "International Journal of Engine Research",
+        year: "2008",
+      },
+      {
+        title:
+          "An optimal control approach to minimizing entropy generation in an adiabatic internal combustion engine",
+        journal: "Journal of Dynamic Systems, Measurement, and Control",
+        year: "2008",
+      },
+      {
+        title:
+          "Comparative exergy analysis of NREL thermo-chemical biomass-to-ethanol process designs",
+        journal: "in preparation",
+      },
+      {
+        title:
+          "Requirements for designing chemical engines with reversible reactions",
+        journal: "in preparation",
+      },
+    ],
+    professionalService: [
+      "Serving as reviewer for professional journals, including optics letters, optics express, optics communications, and IEEE transactions on medical imaging",
+    ],
     coursesTaught: [
       { code: "CHEM2090J", title: "Chemistry" },
       { code: "CHEM2100J", title: "Chemistry" },

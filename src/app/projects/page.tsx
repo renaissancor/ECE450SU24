@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Checkboxes from "./components/project-search-panel";
-import { exampleCapstoneProjects } from "./dummy";
+import { exampleCapstoneProjects } from "@/data/projects";
 import ProjectViewCard from "./components/project-view";
 import { CapstoneProject } from "@/types/types";
 
