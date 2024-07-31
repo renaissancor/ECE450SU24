@@ -13,13 +13,13 @@ interface WorkExperience {
 
 interface Award {
   name: string;
-  year: string;
+  year?: string;
 }
 
 interface Publication {
   title: string;
   journal: string;
-  year: string;
+  year?: string;
 }
 
 interface Course {
@@ -1138,6 +1138,302 @@ const instructors: Instructor[] = [
       },
       { code: "VM552", title: "Mechatronic Systems Design" },
       { code: "VM450/VE 450", title: "Capstone Design Project" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 93,
+    name: "David Hung",
+    telephone: "+86-21-34206765 Ext. 4002",
+    office: 400,
+    email: "dhung@sjtu.edu.cn",
+    webpage: "https://sites.ji.sjtu.edu.cn/davidhung/",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Mechanical Engineering",
+        institution: "Carnegie Mellon University",
+        year: "1998",
+      },
+      {
+        degree: "M.S.",
+        field: "Mechanical Engineering",
+        institution: "Carnegie Mellon University",
+        year: "1993",
+      },
+      {
+        degree: "B.S.",
+        field: "Mechanical Engineering",
+        institution: "Iowa State University",
+        year: "1991",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2010 – present",
+        position: "Professor, Mechanical Engineering",
+        institution: "UM-SJTU Joint Institute, SJTU",
+      },
+      {
+        period: "2010 – present",
+        position: "Professor, School of Mechanical Engineering",
+        institution: "SJTU",
+      },
+      {
+        period: "2009 – 2010",
+        position: "Associate Professor, Department of Mechanical Engineering",
+        institution: "Michigan State University, USA",
+      },
+      {
+        period: "2003 – 2009",
+        position: "Technical Fellow",
+        institution: "Visteon Corporation, USA",
+      },
+      {
+        period: "2000 – 2003",
+        position: "Advanced Project Engineer",
+        institution: "Delphi Corporation, USA",
+      },
+      {
+        period: "1998 – 2000",
+        position: "Project Engineer",
+        institution: "General Motors Corporation, Delphi Corporation, USA",
+      },
+    ],
+    honorsAndAwards: [
+      { name: "Fellow, SAE (Society of Automotive Engineers)" },
+      {
+        name: "New Century Excellent Talents in University (NCET) Award, Ministry of Education, China",
+      },
+      { name: "SJTU Excellent Teaching Award – First Prize", year: "2012" },
+      {
+        name: "SAE/InterRegs Standards & Regulations Award for Young Engineers",
+      },
+      {
+        name: "SAE-International Engineering Meetings Board Outstanding Oral Presentation Award (Twice)",
+      },
+      { name: "SAE-International Henry Souther Standards Award" },
+      {
+        name: "SAE-International Technical Standards Board Outstanding Contribution Award",
+      },
+    ],
+    researchInterests: [],
+    selectedPublications: [
+      {
+        title:
+          "Temporal evolution analysis of in-cylinder flow by means of proper orthogonal decomposition",
+        journal: "International Journal of Engine Research",
+        year: "2021",
+      },
+      {
+        title:
+          "Study of component proportion effects on flash boiling atomization with ternary-alkane fuel mixtures",
+        journal: "Fuel",
+        year: "2021",
+      },
+      {
+        title:
+          "K-means clustering-driven detection of time-resolved vortex patterns and cyclic variations inside a direct injection engine",
+        journal: "Applied Thermal Engineering",
+        year: "2020",
+      },
+      {
+        title:
+          "Time-sequenced flow field prediction in an optical spark-ignition direct-injection engine using bidirectional recurrent neural network (bi-RNN) with long short-term memory",
+        journal: "Applied Thermal Engineering",
+        year: "2020",
+      },
+      {
+        title:
+          "Multi-plane Time-resolved Particle Image Velocimetry (PIV) Flow Field Measurements in an Optical SIDI Engine for Large-Eddy Simulation (LES) Model Validations",
+        journal: "Oil Gas Science Technology IFP Energies Nouvelles",
+        year: "2019",
+      },
+      {
+        title:
+          "Effects of Outlier Flow Field on the Characteristics of In-Cylinder Coherent Structures Identified by Proper Orthogonal Decomposition-Based Conditional Averaging and Quadruple Proper Orthogonal Decomposition",
+        journal:
+          "Journal of Engineering for Gas Turbines and Power, Transactions of ASME",
+        year: "2019",
+      },
+      {
+        title:
+          "Analysis of Crank Angle-Resolved Vortex Characteristics under High Swirl Condition in a Spark-Ignition Direct-Injection Engine",
+        journal:
+          "Journal of Engineering for Gas Turbines and Power, Transactions of ASME",
+        year: "2018",
+      },
+      {
+        title:
+          "Characteristics and Correlation of Nozzle Internal Flow and Jet Breakup under Flash Boiling Conditions",
+        journal: "International Journal of Heat and Mass Transfer",
+        year: "2018",
+      },
+      {
+        title:
+          "Gasoline Fuel Injector Spray Measurement and Characterization – A New SAE J2715 Recommended Practice",
+        journal: "SAE Int. J. Fuels Lubr.",
+        year: "2008",
+      },
+      {
+        title:
+          "Ultrafast X-ray study of dense-liquid-jet flow dynamics using structure-tracking velocimetry",
+        journal: "Nature Physics",
+        year: "2008",
+      },
+    ],
+    professionalService: [
+      "Technical Session Organizer, ASME Internal Engineer Conference Fall Meeting (2014) (Fuel Tracks)",
+      "Technical Session Organizer, SAE Powertrain Fuels and Lubricants Meeting with Japan SAE (2011), Korea SAE (2013)",
+      "Technical Session Organizer, Fuel Injection and Sprays, SAE Powertrain, Fuels and Lubricants Meetings (2009 – present)",
+      "Technical Session Organizer, HCCI Control, 2010 SAE World Congress & Exhibition",
+      "Technical Session Organizer, Combustion Sensing and Control, 2009 SAE World Congress & Exhibition",
+      "Member of the editorial board, Progress in Energy and Combustion Science",
+      "Member of the editorial board, Journal of Atomization and Sprays (5/2006 to 8/2008)",
+      "Reviewer for Journal of Atomization and Sprays, AIAA Journal of Propulsion and Power, SAE Journals and Transactions; American Chemical Society – Proposal for Petroleum Research Fund",
+      "Vice-Chairman, SAE Gasoline Fuel Injection Standards Committee (2004 to present)",
+      "Chairman, Western New York Section of SAE (2002 to 2003)",
+    ],
+    coursesTaught: [
+      { code: "VE216", title: "Signals and Systems" },
+      { code: "VE311", title: "Electronic Circuits" },
+      {
+        code: "VE460",
+        title:
+          "Control Systems Analysis and Design/VM 461: Automatic Control Modeling, Analysis and Control of Dynamic Systems",
+      },
+      { code: "VM552", title: "Mechatronic Systems Design" },
+      { code: "VM450/VE 450", title: "Capstone Design Project" },
+    ],
+    projects: [], // No project IDs provided
+  },
+  {
+    id: 124,
+    name: "Kwee-Yan Teh",
+    telephone: "+86-21-34206765 Ext. 4373",
+    office: 437,
+    email: "tehk@sjtu.edu.cn",
+    webpage: "",
+    education: [
+      {
+        degree: "Ph.D.",
+        field: "Mechanical Engineering",
+        institution: "Stanford University",
+        year: "2007",
+      },
+      {
+        degree: "M.S.M.E.",
+        field: "Mechanical Engineering",
+        institution: "Stanford University",
+        year: "2003",
+      },
+      {
+        degree: "B.S.M.E. with Highest Distinction (Minor in Economics)",
+        field: "Mechanical Engineering",
+        institution: "Purdue University",
+        year: "2001",
+      },
+    ],
+    workExperience: [
+      {
+        period: "2011.5 – present",
+        position: "Lecturer of Mechanical Engineering",
+        institution:
+          "University of Michigan-Shanghai Jiao Tong University Joint Institute",
+      },
+      {
+        period: "2003.9 – 2003.12",
+        position: "Teaching Assistant",
+        institution: "Stanford University, Stanford CA",
+      },
+      {
+        period: "2001.1 – 2001.05",
+        position: "Ford Undergraduate Lab Assistant",
+        institution: "Purdue University, West Lafayette IN",
+      },
+      {
+        period: "1999.1 – 2000.12",
+        position: "Course Assistant",
+        institution: "Purdue University, West Lafayette IN",
+      },
+    ],
+    honorsAndAwards: [
+      {
+        name: "Best Paper Award, ASME IMECE Advanced Energy Systems Division (second author, with S. Ramakrishnan and C. F. Edwards)",
+        year: "2009",
+      },
+      {
+        name: "Best Paper Award, International Journal of Engine Research (first author, with S. L. Miller and C. F. Edwards)",
+        year: "2008",
+      },
+      { name: "Stanford Graduate Fellowship", year: "2001–2004" },
+      {
+        name: "First Place and Best Technical Content, ASME Region VI Old Guard Oral Competition",
+        year: "2000",
+      },
+      {
+        name: "International Gas Turbine Institute (IGTI) Scholarship",
+        year: "2000",
+      },
+      { name: "ASME Foundation Scholarship", year: "2000" },
+      {
+        name: "ASME F.W. “Beich” Beichley Engineering Scholarship",
+        year: "1999",
+      },
+      {
+        name: "(3) Purdue University School of Mechanical Engineering Scholarships",
+        year: "1998–2000",
+      },
+      { name: "Phi Kappa Phi", year: "2001" },
+      { name: "Pi Tau Sigma", year: "1999" },
+    ],
+    researchInterests: [],
+    selectedPublications: [
+      {
+        title:
+          "Thermodynamic analysis of fermentation and anaerobic growth of baker’s yeast for ethanol production",
+        journal: "J. Biotechnology",
+        year: "2010",
+      },
+      {
+        title:
+          "Thermodynamic requirements for maximum internal combustion engine cycle efficiency. Part 1: Optimal combustion strategy",
+        journal: "International Journal of Engine Research",
+        year: "2008",
+      },
+      {
+        title:
+          "Thermodynamic requirements for maximum internal combustion engine cycle efficiency. Part 2: Work extraction and reactant preparation strategies",
+        journal: "International Journal of Engine Research",
+        year: "2008",
+      },
+      {
+        title:
+          "An optimal control approach to minimizing entropy generation in an adiabatic internal combustion engine",
+        journal: "Journal of Dynamic Systems, Measurement, and Control",
+        year: "2008",
+      },
+      {
+        title:
+          "Comparative exergy analysis of NREL thermo-chemical biomass-to-ethanol process designs",
+        journal: "in preparation",
+      },
+      {
+        title:
+          "Requirements for designing chemical engines with reversible reactions",
+        journal: "in preparation",
+      },
+    ],
+    professionalService: [
+      "Serving as reviewer for professional journals, including optics letters, optics express, optics communications, and IEEE transactions on medical imaging",
+    ],
+    coursesTaught: [
+      { code: "CHEM2090J", title: "Chemistry" },
+      { code: "CHEM2100J", title: "Chemistry" },
+      { code: "ENGR1000J", title: "Introduction to Engineering" },
+      { code: "MSE3600J", title: "Materials Lab I" },
+      { code: "MSE3650J", title: "Materials Lab II" },
+      { code: "MSE4820J", title: "Principles of Materials Processing" },
     ],
     projects: [], // No project IDs provided
   },
