@@ -26,10 +26,28 @@ function PaginationDemo({
   totalPages,
   onPageChange,
 }: PaginationDemoProps) {
-  const pageNumbers = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
+  const getPageNumbers = () => {
+    const maxPagesToShow = 4;
+    const half = Math.floor(maxPagesToShow / 2);
+    let startPage = Math.max(1, currentPage - half);
+    let endPage = Math.min(totalPages, currentPage + half);
+
+    if (currentPage <= half) {
+      endPage = Math.min(totalPages, maxPagesToShow);
+    }
+
+    if (currentPage + half >= totalPages) {
+      startPage = Math.max(1, totalPages - maxPagesToShow + 1);
+    }
+
+    const pages = [];
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    return pages;
+  };
+
+  const pageNumbers = getPageNumbers();
 
   return (
     <Pagination>
@@ -91,7 +109,7 @@ export default function ProjectsPage() {
   return (
     <div className="grid grid-cols-5 gap-2">
       <Checkboxes />
-      <div className="col-span-4 grid grid-cols-3 m-2 gap-2">
+      <div className="col-span-4 grid grid-cols-2 m-2 gap-2">
         {currentProjects.map((project: CapstoneProject) => (
           <ProjectViewCard key={project.ProjectID} project={project} />
         ))}
