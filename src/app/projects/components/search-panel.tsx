@@ -34,6 +34,8 @@ const semesters = [
   { id: "21SU", label: "2021 Summer" },
   { id: "20FA", label: "2020 Fall" },
   { id: "20SU", label: "2020 Summer" },
+  { id: "19FA", label: "2019 Fall" },
+  { id: "19SU", label: "2019 Summer" },
 ] as const;
 
 const FormSchema = z.object({
@@ -41,6 +43,7 @@ const FormSchema = z.object({
 });
 
 type SliderSemesterProps = React.ComponentProps<typeof Slider>;
+
 const SliderSemester: React.FC<SliderSemesterProps> = ({
   className,
   ...props
@@ -48,24 +51,25 @@ const SliderSemester: React.FC<SliderSemesterProps> = ({
   return (
     <Card>
       <CardHeader>Select Semester Range</CardHeader>
-      <CardContent className="m-6">
-        <Slider
-          defaultValue={[2]}
-          min={1}
-          max={semesters.length - 1}
-          step={1}
-          className={cn("w-[100%]", className)}
-          {...props}
-        />
+      <CardContent className="space-y-4 m-6">
+        <div className="grid grid-cols-11 gap-4">
+          {semesters.map((semester) => (
+            <Label key={semester.id} className="text-xs text-center">
+              {semester.id}
+            </Label>
+          ))}
+        </div>
+        <div className="relative">
+          <Slider
+            defaultValue={[1, 2]}
+            min={1}
+            max={semesters.length}
+            step={1}
+            className={cn("absolute w-full", className)}
+            {...props}
+          />
+        </div>
       </CardContent>
-      <CardFooter className="m-6 grid grid-cols-10">
-        <div></div>
-        {semesters.map((semester) => (
-          <Label key={semester.id} className="text-xs">
-            {semester.id}
-          </Label>
-        ))}
-      </CardFooter>
     </Card>
   );
 };
