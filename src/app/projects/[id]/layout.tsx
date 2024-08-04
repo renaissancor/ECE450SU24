@@ -12,6 +12,7 @@ export default function ProjectIDLayout({ children }: ProjectIDLayoutProps) {
           <a href="/projects">Back to Projects</a>
         </nav>
       </header>
+
       <main>{children}</main>
     </div>
   );

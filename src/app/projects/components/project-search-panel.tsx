@@ -20,25 +20,42 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
 
 const semesters = [
-  { id: "24SU", label: "2024 Summer" },
-  { id: "23FA", label: "2023 Fall" },
-  { id: "23SU", label: "2023 Summer" },
-  { id: "22FA", label: "2022 Fall" },
-  { id: "22SU", label: "2022 Summer" },
-  { id: "21FA", label: "2021 Fall" },
-  { id: "21SU", label: "2021 Summer" },
-  { id: "20FA", label: "2020 Fall" },
-  { id: "20SU", label: "2020 Summer" },
+  { id: "2024 Summer", label: "2024 Summer" },
+  { id: "2023 Fall", label: "2023 Fall" },
+  { id: "2023 Summer", label: "2023 Summer" },
+  { id: "2022 Fall", label: "2022 Fall" },
+  { id: "2022 Summer", label: "2022 Summer" },
+  { id: "2021 Fall", label: "2021 Fall" },
+  { id: "2021 Summer", label: "2021 Summer" },
+  { id: "2020 Fall", label: "2020 Fall" },
+  { id: "2020 Summer", label: "2020 Summer" },
 ] as const;
 
 const courses = [
-  { id: "ECE4500J", label: "Major Design Experience(MDE)" },
-  { id: "ME4500J", label: "Design and Manufacturing III" },
-  { id: "MSE4500J", label: "Product Design and Manufacturing" },
-  { id: "ME4950J", label: "Laboratory II" },
-  { id: "ECE4270J", label: "VLSI Design" },
-  { id: "ECE4700J", label: "Computer Architecture" },
-  { id: "ECE4410J", label: "App Development for Entrepreneurs" },
+  { id: "Major Design Experience(MDE)", label: "Major Design Experience(MDE)" },
+  { id: "Design and Manufacturing III", label: "Design and Manufacturing III" },
+  { id: "Product Design and Manufacturing", label: "Product Design and Manufacturing" },
+  { id: "Laboratory II", label: "Laboratory II" },
+  { id: "VLSI Design", label: "VLSI Design" },
+  { id: "Computer Architecture", label: "Computer Architecture" },
+  { id: "App Development for Entrepreneurs", label: "App Development for Entrepreneurs" },
+  { id: "Advanced Embedded System", label: "Advanced Embedded System" },
+] as const;
+
+const sponsors = [
+  { id: "Bosch (Shanghai) Smart Life Technology Ltd. (RBLC)", label: "Bosch" },
+  { id: "United Automotive Electronic Systems (UAES)", label: "UAES" },
+  { id: "HASCO Vision Technology Co., Ltd.", label: "HASCO" },
+  { id: "Rockwell", label: "Rockwell" },
+  { id: "AIMS", label: "AIMS" },
+  { id: "NIO", label: "NIO" },
+  { id: "AMD", label: "AMD" },
+  { id: "University of Michiga", label: "University of Michigan" },
+  { id: "Sunway", label: "Sunway" },
+  { id: "Builder[x]", label: "BuilderX" },
+  { id: "Joint Institute", label: "Joint Institute" },
+  { id: "TerraQuanta", label: "TerraQuanta" },
+  { id: "Others", label: "Others" },
 ] as const;
 
 const FormSchema = z.object({
@@ -48,11 +65,14 @@ const FormSchema = z.object({
   courses: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one course.",
   }),
+  sponsors: z.array(z.string()).refine((value) => value.some((item) => item), {
+    message: "You have to select at least one sponsor.",
+  }),
   student_search: z.string().optional(),
   project_search: z.string().optional(),
 });
 
-const Checkboxes: React.FC = () => {
+const Checkboxes: React.FC = ({ onDataUpdate }) => {
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -60,6 +80,7 @@ const Checkboxes: React.FC = () => {
     defaultValues: {
       semesters: [...semesters.map((item) => item.id)],
       courses: [...courses.map((item) => item.id)],
+      sponsors: [...sponsors.map((item) => item.id)],
       student_search: "",
       project_search: "",
     },
@@ -67,9 +88,10 @@ const Checkboxes: React.FC = () => {
 
   const allSemesterIds = semesters.map((item) => item.id);
   const allCourseIds = courses.map((item) => item.id);
+  const allSponsorIds = sponsors.map((item) => item.id);
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log(data);
+    console.log("search ", data);
     toast({
       title: "You submitted the following values:",
       description: (
@@ -97,36 +119,56 @@ const Checkboxes: React.FC = () => {
     form.setValue("courses", []);
   };
 
+  const handleSelectAllSponsors = () => {
+    form.setValue("sponsors", allSponsorIds);
+  };
+
+  const handleDeselectAllSponsors = () => {
+    form.setValue("sponsors", []);
+  };
+
   const handleSubmit = () => {
-    form.handleSubmit(() => onSubmit)();
+    console.log("submit");
+  };
+
+  const clickon = async () => {
+    console.log("aa");
+    console.log(form);
+    console.log(form.getValues("courses"));
+    console.log(form.getValues("semesters"));
+    console.log(form.getValues("sponsors"));
+    try {
+      const response = await fetch("http://127.0.0.1:5000/list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          key: "value",
+          courses: form.getValues("courses"),
+          semesters: form.getValues("semesters"),
+          sponsors: form.getValues("sponsors"),
+          project_search: form.getValues("project_search"),
+        }),
+      });
+      const newData = await response.json();
+      onDataUpdate(newData.list); // 假设返回的数据中有一个字段叫someField
+    } catch (error) {
+      console.error("请求失败:", error);
+    }
   };
 
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="m-2">
-          <FormField
-            control={form.control}
-            name="student_search"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>Student & Project Search</FormLabel>
-                <FormControl>
-                  <Input placeholder="Search students" {...field} />
-                </FormControl>
-                <FormDescription>
-                  Search by student id, name, or email
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <Separator className="mt-2" />
           <FormField
             control={form.control}
             name="project_search"
             render={({ field }) => (
               <FormItem className="flex-1">
+                <FormLabel>Project Search</FormLabel>
                 <FormControl>
                   <Input placeholder="Search projects" {...field} />
                 </FormControl>
@@ -257,7 +299,68 @@ const Checkboxes: React.FC = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="mt-4 w-full">
+          <Separator className="mt-2" />
+          <FormField
+            control={form.control}
+            name="sponsors"
+            render={() => (
+              <FormItem className="flex-1">
+                <div className="mb-4">
+                  <FormLabel className="text-base">Sponsors</FormLabel>
+                  <FormDescription>Project Sponsors</FormDescription>
+                </div>
+                {sponsors.map((item) => (
+                  <FormField
+                    key={item.id}
+                    control={form.control}
+                    name="sponsors"
+                    render={({ field }) => (
+                      <FormItem
+                        key={item.id}
+                        className="flex flex-row items-start space-x-3 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes(item.id)}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, item.id])
+                                : field.onChange(
+                                    field.value?.filter(
+                                      (value) => value !== item.id
+                                    )
+                                  );
+                            }}
+                          />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          {item.label}
+                        </FormLabel>
+                      </FormItem>
+                    )}
+                  />
+                ))}
+                <FormMessage />
+                <div className="mb-4 flex space-x-2">
+                  <Button
+                    className="p-2"
+                    type="button"
+                    onClick={handleSelectAllSponsors}
+                  >
+                    Select All
+                  </Button>
+                  <Button
+                    className="p-2"
+                    type="button"
+                    onClick={handleDeselectAllSponsors}
+                  >
+                    Deselect All
+                  </Button>
+                </div>
+              </FormItem>
+            )}
+          />
+          <Button type="button" className="mt-4 w-full" onClick={clickon}>
             Search
           </Button>
         </div>

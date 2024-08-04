@@ -1,3 +1,4 @@
+
 // Capstone Project Schema
 interface CapstoneProject {
   ProjectID: number;
@@ -340,8 +341,31 @@ const exampleCapstoneProjects: CapstoneProject[] = [
   },
 ];
 
-const getProject = (projectId: string): CapstoneProject | undefined => {
+const getProject =  (projectId: string) => {
   console.log("Searching for project ID:", parseInt(projectId));
+  // try {
+  //   const response = await fetch("http://127.0.0.1:5000/detail", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       id: 1
+  //     }),
+  //   });
+
+  //   if (!response.ok) {
+  //     throw new Error('Network response was not ok');
+  //   }
+
+  //   const project = await response.json();
+  //   console.log('Success:', project);
+  //   return project;
+  //   // 这里可以处理你的数据，比如设置状态
+  // } catch (error) {
+  //   console.error('Error:', error);
+
+  // }
   const project = exampleCapstoneProjects.find(
     (project) => project.ProjectID === parseInt(projectId)
   );

@@ -1,25 +1,52 @@
 "use client";
 
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { auth } from "../components/firebase"; // Import the auth object from your Firebase config
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+
+  function isFirebaseError(error: unknown): error is { code: string } {
+    return (error as { code: string }).code !== undefined;
+  }
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
     setIsLoading(true);
 
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    try {
+      // Sign in or sign up the user
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log("User signed in: ", userCredential.user);
+    } catch (error) {
+      if (isFirebaseError(error)) {
+        console.log(error.code)
+        try {
+          const newUserCredential = await createUserWithEmailAndPassword(auth, email, password);
+          console.log("User created: ", newUserCredential.user);
+        } catch (createError) {
+          if (isFirebaseError(createError)) {
+            console.error("Error creating user: ", createError.code);
+          } else {
+            console.error("Unexpected error creating user: ", createError);
+          }
+        }
+      } else {
+        console.error("Unexpected error signing in: ", error);
+      }
+    }
+
+    setIsLoading(false);
   }
 
   return (
@@ -38,6 +65,22 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Label className="sr-only" htmlFor="password">
+              Password
+            </Label>
+            <Input
+              id="password"
+              placeholder="Password"
+              type="password"
+              autoCapitalize="none"
+              autoComplete="current-password"
+              autoCorrect="off"
+              disabled={isLoading}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <Button disabled={isLoading}>

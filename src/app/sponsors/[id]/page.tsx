@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { getSponsor, Sponsor } from "@/data/sponsors"; // Adjust the import path based on your actual file structure
+import ProjectIDCard from "./project_card";
 
 export default function SponsorIDPage() {
   const pathname = usePathname();
@@ -36,13 +37,10 @@ export default function SponsorIDPage() {
             {sponsor.homepage}
           </a>
         </p>
-        <div className="mt-4">
-          <h2 className="text-xl font-semibold">Projects</h2>
-          <ul className="list-disc list-inside">
-            {sponsor.projects.map((project, index) => (
-              <li key={index}>Project ID: {project}</li>
-            ))}
-          </ul>
+        <div className="grid grid-cols-2">
+          {sponsor.projects.map((project_id, index) => (
+            <ProjectIDCard id={project_id} key={index} />
+          ))}
         </div>
       </div>
     </div>

@@ -1,97 +1,145 @@
-"use client";
+"use client";  
+  
+import { usePathname } from "next/navigation";  
+import { useEffect, useState } from 'react';
+import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed  
+  
+export default function ProjectIDPage() {  
+  const pathname = usePathname();  
+  const id = pathname.split("/").pop();  
+  const [project, setProject] = useState<CapstoneProject | null>(null);  
+  const [loading, setLoading] = useState(false);  
+  const [error, setError] = useState<string | null>(null);  
+  
+  useEffect(() => {  
+    if (!id) {  
+      setError("Error: Project ID is missing");  
+      return;  
+    }  
+  
+    setLoading(true);  
+    fetch("http://127.0.0.1:5000/detail", {  
+      method: "POST",  
+      headers: {  
+        "Content-Type": "application/json",  
+      },  
+      body: JSON.stringify({  
+        "projectid": parseInt(id, 10) // Assuming id should be parsed as integer  
+      }),  
+    })  
+      .then(response => response.json())  
+      .then(data => {  
+        setProject(data);  
+        setLoading(false);  
+        setError(null);  
+      })  
+      .catch(err => {  
+        console.error("Error:", err);  
+        setError("Failed to load project details");  
+        setLoading(false);  
+      });  
+  }, [id]);  
+  
+  if (error) {  
+    return <div className="text-red-500">{error}</div>;  
+  }  
+  
+  if (loading) {  
+    return <div>Loading project details...</div>;  
+  }  
+  
+  if (!project) {  
+    return <div>Project not found</div>;  
+  }  
+  
+  return (  
+    <div className="p-8 max-w-4xl mx-auto">  
+      <h1 className="text-4xl font-bold mb-4">{project.title}</h1>  
+      <div className="mb-4">  
+        <p className="text-xl">  
+          <span className="font-semibold">Year:</span> {project.year}  
+        </p>  
+        <p className="text-xl">  
+          <span className="font-semibold">Semester:</span>{" "}  
+          {project.semester}  
+        </p>  
+        <p className="text-xl">  
+          <span className="font-semibold">Course:</span>{" "}  
+          {project.course}  
+        </p>  
+        <p className="text-xl">  
+          <span className="font-semibold">Sponsor:</span>{" "}  
+          {project.sponsor}  
+        </p> 
+        <p className="text-xl">  
+          <span className="font-semibold">Team Members:</span>{" "}  
+          {project.members}  
+        </p> 
+        <p className="text-xl">  
+          <span className="font-semibold">Company/School Mentor:</span>{" "}  
+          {project.companymentor}  
+        </p> 
+        <p className="text-xl">  
+          <span className="font-semibold">Instructor:</span>{" "}  
+          {project.instructor}  
+        </p> 
 
-import { usePathname } from "next/navigation";
-import { getProject } from "@/data/projects"; // Adjust the import path as needed
-import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed
 
-export default function ProjectIDPage() {
-  const pathname = usePathname();
-  const id = pathname.split("/").pop();
+        <p className="text-xl">  
+        <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+          Problem Statement:
+        </span>
+          {project.problem}  
+        </p> 
 
-  if (!id) {
-    return <div className="text-red-500">Error: Project ID is missing</div>;
-  }
+        <p className="text-xl">  
+        <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+            Concept Generation
+          </span>
+          {project.concept}  
+        </p> 
 
-  const project: CapstoneProject | undefined = getProject(id.toString());
 
-  if (!project) {
-    return <div>Loading project details...</div>;
-  }
+        <p className="text-xl">  
+        <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+            Design Description
+          </span>
+          {project.description}  
+        </p> 
 
-  return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-4">{project.ProjectName}</h1>
-      <div className="mb-4">
-        <p className="text-xl">
-          <span className="font-semibold">Year:</span> {project.Year}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Semester:</span>{" "}
-          {project.Semester === 1
-            ? "Fall"
-            : project.Semester === 2
-            ? "Spring"
-            : "Summer"}
-        </p>
-      </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Instructors</h2>
-        <p className="text-xl">
-          {project.InstructorID1}, {project.InstructorID2},{" "}
-          {project.InstructorID3}, {project.InstructorID4},{" "}
-          {project.InstructorID5}
-        </p>
-      </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Sponsor</h2>
-        <p className="text-xl">{project.SponsorID}</p>
-      </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Group</h2>
-        <p className="text-xl">
-          <span className="font-semibold">Leader ID:</span>{" "}
-          {project.GroupLeaderID}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Members:</span> {project.GroupMember1}
-          , {project.GroupMember2}, {project.GroupMember3},{" "}
-          {project.GroupMember4}
-        </p>
-      </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Project Details</h2>
-        <p className="text-xl">
-          <span className="font-semibold">Proposal:</span> {project.Proposal}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Design Review 1:</span> {project.DR1}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Design Review 2:</span> {project.DR2}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Design Review 3:</span> {project.DR3}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Poster:</span> {project.Poster}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Final Presentation Video:</span>{" "}
-          {project.VideoFinalPre}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Expo Video:</span> {project.VideoExpo}
-        </p>
-      </div>
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold">Awards and Expense</h2>
-        <p className="text-xl">
-          <span className="font-semibold">Award:</span> {project.Award}
-        </p>
-        <p className="text-xl">
-          <span className="font-semibold">Expense:</span> ${project.Expense}
-        </p>
-      </div>
-    </div>
-  );
+
+        <p className="text-xl">  
+        <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+            Modeling and Analysis
+          </span>
+          {project.analysis}  
+        </p> 
+
+        <p className="text-xl">  
+        <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+            Validation
+          </span>
+          {project.validation}  
+        </p> 
+
+
+        <p className="text-xl">  
+
+        <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+        Conclusion
+          </span>
+          {project.conclusion}  
+        </p> 
+
+
+        <p className="text-xl">  
+          <span style={{ display: 'block', textAlign: 'center', fontWeight: 'bold',  marginTop: '1em' }}>
+            Acknowledgement
+          </span>
+          {project.acknowledgement}  
+        </p> 
+
+      </div>  
+    </div>  
+  );  
 }
