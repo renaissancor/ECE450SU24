@@ -1,7 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
+import React, { useEffect, useState } from "react";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 import { Button } from "@/components/ui/button";
 
 interface ProjectData {
@@ -20,13 +27,15 @@ export function Overview() {
   const [endSemester, setEndSemester] = useState("SUMMER");
 
   const fetchData = () => {
-    fetch(`http://127.0.0.1:5000/projects-by-semester?startYear=${startYear}&startSemester=${startSemester}&endYear=${endYear}&endSemester=${endSemester}`)
-      .then(response => response.json())
+    fetch(
+      `http://127.0.0.1:5000/projects-by-semester?startYear=${startYear}&startSemester=${startSemester}&endYear=${endYear}&endSemester=${endSemester}`
+    )
+      .then((response) => response.json())
       .then((data: ProjectData[]) => {
         // Sort the data from oldest to newest
         const sortedData = data.sort((a: ProjectData, b: ProjectData) => {
-          const [yearA, semesterA] = a.semester.split(' ');
-          const [yearB, semesterB] = b.semester.split(' ');
+          const [yearA, semesterA] = a.semester.split(" ");
+          const [yearB, semesterB] = b.semester.split(" ");
 
           if (yearA !== yearB) {
             return parseInt(yearA) - parseInt(yearB);
@@ -35,28 +44,59 @@ export function Overview() {
         });
         setData(sortedData);
       })
-      .catch(error => console.error('Error fetching project data by semester:', error));
+      .catch((error) =>
+        console.error("Error fetching project data by semester:", error)
+      );
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startYear, startSemester, endYear, endSemester]);
 
   return (
     <div>
       <div className="flex items-center space-x-2 mb-4 pl-8">
-        <select value={startYear} onChange={(e) => setStartYear(parseInt(e.target.value))}>
-          {years.map(year => <option key={year} value={year}>{year}</option>)}
+        <select
+          value={startYear}
+          onChange={(e) => setStartYear(parseInt(e.target.value))}
+        >
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
         </select>
-        <select value={startSemester} onChange={(e) => setStartSemester(e.target.value)}>
-          {semesters.map(semester => <option key={semester} value={semester}>{semester}</option>)}
+        <select
+          value={startSemester}
+          onChange={(e) => setStartSemester(e.target.value)}
+        >
+          {semesters.map((semester) => (
+            <option key={semester} value={semester}>
+              {semester}
+            </option>
+          ))}
         </select>
         <span>to</span>
-        <select value={endYear} onChange={(e) => setEndYear(parseInt(e.target.value))}>
-          {years.map(year => <option key={year} value={year}>{year}</option>)}
+        <select
+          value={endYear}
+          onChange={(e) => setEndYear(parseInt(e.target.value))}
+        >
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
         </select>
-        <select value={endSemester} onChange={(e) => setEndSemester(e.target.value)}>
-          {semesters.map(semester => <option key={semester} value={semester}>{semester}</option>)}
+        <select
+          value={endSemester}
+          onChange={(e) => setEndSemester(e.target.value)}
+        >
+          {semesters.map((semester) => (
+            <option key={semester} value={semester}>
+              {semester}
+            </option>
+          ))}
         </select>
         <Button onClick={fetchData}>Search</Button>
       </div>
