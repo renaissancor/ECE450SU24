@@ -1,13 +1,9 @@
 "use client";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { getProject } from "@/data/projects"; // Adjust the import path as needed
 import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed
 
@@ -41,54 +37,11 @@ export default function ProjectIDCard(props: ProjectIDPageProps) {
           {project.ProjectName}
         </CardTitle>
       </CardHeader>
-      <CardContent className="text-xl">
-        <span className="font-semibold">Year:</span> {project.Year}
-        <p className="text-xl">
-          <span className="font-semibold">Semester:</span>{" "}
-          {project.Semester === 1
-            ? "Fall"
-            : project.Semester === 2
-            ? "Spring"
-            : "Summer"}
-        </p>
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold">Instructors</h2>
-        </div>
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold">Sponsor</h2>
-          <p className="text-xl">{project.SponsorID}</p>
-        </div>
-        <div className="mb-4">
-          <h2 className="text-2xl font-semibold">Group</h2>
-          <p className="text-xl">
-            <span className="font-semibold">Leader ID:</span>{" "}
-            {project.GroupLeaderID}
-          </p>
-          <p className="text-xl">
-            <span className="font-semibold">Members:</span>{" "}
-            {project.GroupMember1}, {project.GroupMember2},{" "}
-            {project.GroupMember3}, {project.GroupMember4}
-          </p>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <CardDescription className="mb-4">
-          <h2 className="text-2xl font-semibold">Project Details</h2>
-          <p className="text-xl">
-            <span className="font-semibold">Proposal:</span> {project.Proposal}
-          </p>
-          <p className="text-xl">
-            <span className="font-semibold">Poster:</span> {project.Poster}
-          </p>
-          <p className="text-xl">
-            <span className="font-semibold">Final Presentation Video:</span>{" "}
-            {project.VideoFinalPre}
-          </p>
-          <p className="text-xl">
-            <span className="font-semibold">Expo Video:</span>{" "}
-            {project.VideoExpo}
-          </p>
-        </CardDescription>
+      <Separator />
+      <CardFooter className="mb-4">
+        <Link className="w-full" href={`/project/${project.ProjectID}`}>
+          <Button className="w-full">View Details</Button>
+        </Link>
       </CardFooter>
     </Card>
   );

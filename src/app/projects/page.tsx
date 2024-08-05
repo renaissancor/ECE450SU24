@@ -1,10 +1,17 @@
 "use client";
 
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import Checkboxes from "./components/project-search-panel";
 // import { exampleCapstoneProjects } from "@/data/projects";
+=======
+import { useState } from "react";
+// import Checkboxes from "./components/project-search-panel";
+import { exampleCapstoneProjects } from "@/data/projects";
+>>>>>>> origin/main
 import ProjectViewCard from "./components/project-view";
 import { CapstoneProject } from "@/types/types";
+import SearchPanel from "./components/search-panel";
 
 import {
   Pagination,
@@ -26,6 +33,7 @@ function PaginationDemo({
   totalPages,
   onPageChange,
 }: PaginationDemoProps) {
+<<<<<<< HEAD
   const pageNumbers = [];
   const maxPageNumbersToShow = 7;
   const halfPageNumbersToShow = Math.floor(maxPageNumbersToShow / 2);
@@ -40,6 +48,30 @@ function PaginationDemo({
   for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(i);
   }
+=======
+  const getPageNumbers = () => {
+    const maxPagesToShow = 4;
+    const half = Math.floor(maxPagesToShow / 2);
+    let startPage = Math.max(1, currentPage - half);
+    let endPage = Math.min(totalPages, currentPage + half);
+
+    if (currentPage <= half) {
+      endPage = Math.min(totalPages, maxPagesToShow);
+    }
+
+    if (currentPage + half >= totalPages) {
+      startPage = Math.max(1, totalPages - maxPagesToShow + 1);
+    }
+
+    const pages = [];
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    return pages;
+  };
+
+  const pageNumbers = getPageNumbers();
+>>>>>>> origin/main
 
   return (
     <Pagination>
@@ -141,14 +173,20 @@ export default function ProjectsPage() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="grid grid-cols-5 gap-2">
       <Checkboxes onDataUpdate={updateData} />
       <div className="col-span-4 grid grid-cols-3 m-2 gap-2">
+=======
+    <div className="grid ">
+      <SearchPanel />
+      <div className="grid grid-cols-2 m-2 gap-2">
+>>>>>>> origin/main
         {currentProjects.map((project: CapstoneProject) => (
           <ProjectViewCard key={project.ProjectID} project={project} />
         ))}
       </div>
-      <div className="col-span-5">
+      <div className="grid">
         <PaginationDemo
           currentPage={currentPage}
           totalPages={totalPages}

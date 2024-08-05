@@ -12,23 +12,22 @@ import { Button } from "@/components/ui/button";
 
 const SponsorCard = ({ sponsor }: { sponsor: Sponsor }) => {
   return (
-    <Card className="sponsor-card p-4 flex flex-col h-full">
-      <CardHeader className="flex flex-col items-center">
+    <Card className="sponsor-card p-4 flex flex-col h-full bg-white">
+      <CardHeader className="flex-grow ">
+        <CardTitle className="text-center text-black mt-4">{`${sponsor.name}`}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col items-center">
         {/* Assuming you have images for sponsors named by their id in the public/sponsors directory */}
         <Image
           src={`/sponsors/${sponsor.id}.jpg`}
           alt={sponsor.name}
-          width={150}
-          height={150}
-          className="rounded-full"
+          width={200}
+          height={200}
         />
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <CardTitle className="text-center mt-4">{`${sponsor.name}`}</CardTitle>
       </CardContent>
       <CardFooter>
         <Link className="w-full" href={`/sponsors/${sponsor.id}`}>
-          <Button className="w-full">View Details</Button>
+          <Button className="w-full bg-black text-white">View Details</Button>
         </Link>
       </CardFooter>
     </Card>
