@@ -87,5 +87,167 @@ def projectlist():
     result = {"code": 0, "list": lst}
     return result
 
+@app.route('/total-projects', methods=['GET'])
+def total_projects():
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+    cur.execute("SELECT COUNT(*) FROM project")
+    total = cur.fetchone()[0]
+    return {"total_projects": total}
+
+@app.route('/projects-2023', methods=['GET'])
+def projects_2023():
+    print(123)
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+    cur.execute("SELECT COUNT(*) FROM project WHERE year = 2023")
+    total = cur.fetchone()[0]
+    return {"total_projects": total}
+
+@app.route('/joint-institute-projects', methods=['GET'])
+def joint_institute_projects():
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+    cur.execute("SELECT COUNT(*) FROM project WHERE sponsor = 'Joint Institute'")
+    total = cur.fetchone()[0]
+    return {"total_projects": total}
+
+@app.route('/mde-projects', methods=['GET'])
+def mde_projects():
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+    cur.execute("SELECT COUNT(*) FROM project WHERE course = 'Major Design Experience(MDE)'")
+    total = cur.fetchone()[0]
+    return {"total_projects": total}
+
+@app.route('/projects-by-semester', methods=['GET'])
+def projects_by_semester():
+    start_year = int(request.args.get('startYear'))
+    start_semester = request.args.get('startSemester').upper()
+    end_year = int(request.args.get('endYear'))
+    end_semester = request.args.get('endSemester').upper()
+    
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+
+    # Ensure the order of semesters for comparison
+    semesters_order = {'SUMMER': 1, 'FALL': 0}
+    
+    query = """
+    SELECT year, UPPER(semester), COUNT(*) as total
+    FROM project
+    WHERE (year > ? OR (year = ? AND UPPER(semester) >= ?))
+    AND (year < ? OR (year = ? AND UPPER(semester) <= ?))
+    GROUP BY year, UPPER(semester)
+    ORDER BY year, UPPER(semester)
+    """
+    
+    cur.execute(query, (start_year, start_year, start_semester, end_year, end_year, end_semester))
+    rows = cur.fetchall()
+    data = [{"semester": f"{row[0]} {row[1].upper()}", "total": row[2]} for row in rows]
+    
+    return data
+
+sponsors = [
+    "Bosch (Shanghai) Smart Life Technology Ltd. (RBLC)", 
+    "United Automotive Electronic Systems (UAES)", 
+    "HASCO Vision Technology Co., Ltd.", 
+    "Rockwell", 
+    "AIMS", 
+    "NIO", 
+    "AMD", 
+    "University of Michiga", 
+    "Sunway", 
+    "Builder[x]", 
+    "Joint Institute", 
+    "TerraQuanta"
+]
+
+@app.route('/projects-by-sponsor', methods=['GET'])
+def projects_by_sponsor():
+    start_year = int(request.args.get('startYear'))
+    start_semester = request.args.get('startSemester').upper()
+    end_year = int(request.args.get('endYear'))
+    end_semester = request.args.get('endSemester').upper()
+
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+
+    query = """
+    SELECT sponsor, COUNT(*) as total
+    FROM project
+    WHERE (year > ? OR (year = ? AND UPPER(semester) >= ?))
+        AND (year < ? OR (year = ? AND UPPER(semester) <= ?))
+    GROUP BY sponsor
+    """
+    cur.execute(query, (start_year, start_year, start_semester, end_year, end_year, end_semester))
+    
+    rows = cur.fetchall()
+    data = [{"sponsor": row[0], "total": row[1]} for row in rows]
+    return {"data": data}
+
+@app.route('/projects-by-course', methods=['GET'])
+def projects_by_course():
+    start_year = int(request.args.get('startYear'))
+    start_semester = request.args.get('startSemester').upper()
+    end_year = int(request.args.get('endYear'))
+    end_semester = request.args.get('endSemester').upper()
+
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+
+    query = """
+    SELECT course, COUNT(*) as total
+    FROM project
+    WHERE (year > ? OR (year = ? AND UPPER(semester) >= ?))
+        AND (year < ? OR (year = ? AND UPPER(semester) <= ?))
+    GROUP BY course
+    """
+    cur.execute(query, (start_year, start_year, start_semester, end_year, end_year, end_semester))
+    
+    rows = cur.fetchall()
+    data = [{"course": row[0], "total": row[1]} for row in rows]
+    return {"data": data}
+
+instructors = [
+    "Chong Han",
+    "Chengbin Ma",
+    "Jigang Wu",
+    "David L.S. HUNG",
+    "Kwee-Yan THE",
+    "Yulian He",
+    "Qiang Zhang",
+    "Zhaoguang Wang",
+    "Xinfei Guo",
+    "Xuyang Lu",
+    "An Zou"
+]
+
+@app.route('/projects-by-instructor', methods=['GET'])
+def projects_by_instructor():
+    start_year = int(request.args.get('startYear'))
+    start_semester = request.args.get('startSemester').upper()
+    end_year = int(request.args.get('endYear'))
+    end_semester = request.args.get('endSemester').upper()
+
+    con = sqlite3.connect("data.db")
+    cur = con.cursor()
+
+    data = []
+
+    for instructor in instructors:
+        query = """
+        SELECT COUNT(*) as total
+        FROM project
+        WHERE (year > ? OR (year = ? AND UPPER(semester) >= ?))
+            AND (year < ? OR (year = ? AND UPPER(semester) <= ?))
+            AND instructor LIKE ?
+        """
+        cur.execute(query, (start_year, start_year, start_semester, end_year, end_year, end_semester, f"%{instructor}%"))
+        count = cur.fetchone()[0]
+        data.append({"instructor": instructor, "total": count})
+
+    return {"data": data}
+
 if __name__ == '__main__':
     app.run(debug=True)

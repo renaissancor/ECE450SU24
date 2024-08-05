@@ -2,64 +2,50 @@
 
 import * as React from "react";
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { addDays, format } from "date-fns";
-import { DateRange } from "react-day-picker";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
+const semesters = ["SUMMER", "FALL"];
+const years = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]; // 根据需要添加年份
 
 export function CalendarDateRangePicker({
+  startYear,
+  startSemester,
+  endYear,
+  endSemester,
+  setStartYear,
+  setStartSemester,
+  setEndYear,
+  setEndSemester,
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(2023, 0, 20),
-    to: addDays(new Date(2023, 0, 20), 20),
-  });
-
+}: {
+  startYear: number;
+  startSemester: string;
+  endYear: number;
+  endSemester: string;
+  setStartYear: (year: number) => void;
+  setStartSemester: (semester: string) => void;
+  setEndYear: (year: number) => void;
+  setEndSemester: (semester: string) => void;
+  className?: string;
+}) {
   return (
     <div className={cn("grid gap-2", className)}>
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            id="date"
-            variant={"outline"}
-            className={cn(
-              "w-[260px] justify-start text-left font-normal",
-              !date && "text-muted-foreground",
-            )}
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {date?.from ? (
-              date.to ? (
-                <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
-                </>
-              ) : (
-                format(date.from, "LLL dd, y")
-              )
-            ) : (
-              <span>Pick a date</span>
-            )}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="end">
-          <Calendar
-            initialFocus
-            mode="range"
-            defaultMonth={date?.from}
-            selected={date}
-            onSelect={setDate}
-            numberOfMonths={2}
-          />
-        </PopoverContent>
-      </Popover>
+      <div className="flex space-x-2 mb-4">
+        <select value={startYear} onChange={(e) => setStartYear(parseInt(e.target.value))}>
+          {years.map(year => <option key={year} value={year}>{year}</option>)}
+        </select>
+        <select value={startSemester} onChange={(e) => setStartSemester(e.target.value)}>
+          {semesters.map(semester => <option key={semester} value={semester}>{semester}</option>)}
+        </select>
+        <span>to</span>
+        <select value={endYear} onChange={(e) => setEndYear(parseInt(e.target.value))}>
+          {years.map(year => <option key={year} value={year}>{year}</option>)}
+        </select>
+        <select value={endSemester} onChange={(e) => setEndSemester(e.target.value)}>
+          {semesters.map(semester => <option key={semester} value={semester}>{semester}</option>)}
+        </select>
+      </div>
     </div>
   );
 }
