@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
 import { CapstoneProject } from "@/types/types";
 import Link from "next/link"; // Import Link from next/link
@@ -12,26 +11,24 @@ const ProjectViewCard: React.FC<ProjectViewCardProps> = ({ project }) => {
   return (
     <Card
       className="col-span-1 grid shadow-lg rounded-lg p-6 transition-shadow duration-300 ease-in-out"
-      key={project.projectid}
+      key={project.ProjectID}
     >
-      <CardTitle className="text-xl font-bold text-gray-200 mb-2" style={{color:'black'}}>
-        {project.title}
+      <CardTitle
+        className="text-xl font-bold text-gray-200 mb-2"
+        style={{ color: "black" }}
+      >
+        {project.ProjectName}
       </CardTitle>
       <CardContent className="col-span-4">
-        <div className="text-gray-300" style={{color:'black'}}>
-          <p >
-            <span className="font-semibold">Year:</span> {project.year}
+        <div className="text-gray-300" style={{ color: "black" }}>
+          <p>
+            <span className="font-semibold">Year:</span> {project.Year}
           </p>
           <p>
-            <span className="font-semibold">Semester:</span>{" "}
-            {project.semester}
-          </p>
-          <p>
-            <span className="font-semibold">Course:</span> 
-            {project.course}
+            <span className="font-semibold">Semester:</span> {project.Semester}
           </p>
         </div>
-        {/* <div className="mt-4 flex items-center space-x-2">
+        <div className="mt-4 flex items-center space-x-2">
           {project.Award !== "none" && (
             <span
               className={`inline-block px-3 py-1 text-sm font-semibold text-white rounded-full ${
@@ -41,11 +38,11 @@ const ProjectViewCard: React.FC<ProjectViewCardProps> = ({ project }) => {
               {project.Award === "golden" ? "Golden Award" : "Silver Award"}
             </span>
           )}
-        </div> */}
+        </div>
       </CardContent>
       {/* Button for navigation */}
       <CardFooter className="text-gray-300">
-        <Link href={`/projects/${project.projectid}`} passHref>
+        <Link href={`/projects/${project.ProjectID}`} passHref>
           <Button type="button">View Project</Button>
         </Link>
       </CardFooter>
