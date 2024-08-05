@@ -34,11 +34,17 @@ const semesters = [
 const courses = [
   { id: "Major Design Experience(MDE)", label: "Major Design Experience(MDE)" },
   { id: "Design and Manufacturing III", label: "Design and Manufacturing III" },
-  { id: "Product Design and Manufacturing", label: "Product Design and Manufacturing" },
+  {
+    id: "Product Design and Manufacturing",
+    label: "Product Design and Manufacturing",
+  },
   { id: "Laboratory II", label: "Laboratory II" },
   { id: "VLSI Design", label: "VLSI Design" },
   { id: "Computer Architecture", label: "Computer Architecture" },
-  { id: "App Development for Entrepreneurs", label: "App Development for Entrepreneurs" },
+  {
+    id: "App Development for Entrepreneurs",
+    label: "App Development for Entrepreneurs",
+  },
   { id: "Advanced Embedded System", label: "Advanced Embedded System" },
 ] as const;
 
@@ -72,7 +78,11 @@ const FormSchema = z.object({
   project_search: z.string().optional(),
 });
 
-const Checkboxes: React.FC = ({ onDataUpdate }) => {
+const Checkboxes: React.FC = (
+  {
+    /*onDataUpdate*/
+  }
+) => {
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -152,7 +162,7 @@ const Checkboxes: React.FC = ({ onDataUpdate }) => {
         }),
       });
       const newData = await response.json();
-      onDataUpdate(newData.list); // 假设返回的数据中有一个字段叫someField
+      // onDataUpdate(newData.list); // 假设返回的数据中有一个字段叫someField
     } catch (error) {
       console.error("请求失败:", error);
     }
