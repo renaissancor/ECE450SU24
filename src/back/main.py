@@ -149,18 +149,21 @@ def projects_by_semester():
     return data
 
 sponsors = [
-    "Bosch (Shanghai) Smart Life Technology Ltd. (RBLC)", 
-    "United Automotive Electronic Systems (UAES)", 
-    "HASCO Vision Technology Co., Ltd.", 
-    "Rockwell", 
-    "AIMS", 
-    "NIO", 
-    "AMD", 
-    "University of Michiga", 
-    "Sunway", 
-    "Builder[x]", 
-    "Joint Institute", 
-    "TerraQuanta"
+    "Bosch (Shanghai) Smart Life Technology Ltd. (RBLC)",
+    "Joint Institute",
+    "United Automotive Electronic Systems (UAES)",
+    "R&D Center, HASCO Vision Technology Co., Ltd.",
+    "GM China",
+    "Builder[x]",
+    "Sophoton",
+    "THE",
+    "AIMS",
+    "TerraQuanta",
+    "AMD & University of Michigan",
+    "NexMaterials",
+    "Rockwell",
+    "Sunway",
+    "NIO"
 ]
 
 @app.route('/projects-by-sponsor', methods=['GET'])
@@ -173,17 +176,20 @@ def projects_by_sponsor():
     con = sqlite3.connect("data.db")
     cur = con.cursor()
 
-    query = """
-    SELECT sponsor, COUNT(*) as total
-    FROM project
-    WHERE (year > ? OR (year = ? AND UPPER(semester) >= ?))
-        AND (year < ? OR (year = ? AND UPPER(semester) <= ?))
-    GROUP BY sponsor
-    """
-    cur.execute(query, (start_year, start_year, start_semester, end_year, end_year, end_semester))
-    
-    rows = cur.fetchall()
-    data = [{"sponsor": row[0], "total": row[1]} for row in rows]
+    data = []
+
+    for sponsor in sponsors:
+        query = """
+        SELECT COUNT(*) as total
+        FROM project
+        WHERE (year > ? OR (year = ? AND UPPER(semester) >= ?))
+            AND (year < ? OR (year = ? AND UPPER(semester) <= ?))
+            AND sponsor LIKE ?
+        """
+        cur.execute(query, (start_year, start_year, start_semester, end_year, end_year, end_semester, f"%{sponsor}%"))
+        count = cur.fetchone()[0]
+        data.append({"sponsor": sponsor, "total": count})
+
     return {"data": data}
 
 @app.route('/projects-by-course', methods=['GET'])
