@@ -14,10 +14,6 @@ const examples = [
     href: "https://www.ji.sjtu.edu.cn/",
   },
   {
-    name: "Cards",
-    href: "/cards",
-  },
-  {
     name: "Dashboard",
     href: "/dashboard",
   },
