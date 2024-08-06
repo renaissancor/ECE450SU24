@@ -35,7 +35,10 @@ const FacultyMember = ({ professor }: { professor: Professor }) => {
       <CardFooter>
         <Link
           className="w-full"
-          href={`/faculty/${professor.name.replace(" ", "_").toLowerCase()}`}
+          href={
+            //  `/faculty/${professor.name.replace(" ", "_").toLowerCase()}`
+            `https://www.ji.sjtu.edu.cn/about/faculty-staff/faculty-directory/faculty-detail/${professor.id}`
+          }
         >
           <Button className="w-full">View Profile</Button>
         </Link>

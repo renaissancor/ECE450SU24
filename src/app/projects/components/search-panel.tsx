@@ -15,7 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import ProjectViewCard from "./project-view";
-import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed  
+import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed
 
 import {
   Pagination,
@@ -32,7 +32,11 @@ interface PaginationDemoProps {
   onPageChange: (page: number) => void;
 }
 
-function PaginationDemo({ currentPage, totalPages, onPageChange }: PaginationDemoProps) {
+function PaginationDemo({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationDemoProps) {
   const getPageNumbers = () => {
     const maxPagesToShow = 5;
     const half = Math.floor(maxPagesToShow / 2);
@@ -119,14 +123,29 @@ function PaginationDemo({ currentPage, totalPages, onPageChange }: PaginationDem
 }
 
 const courses = [
-  { id: "Major Design Experience(MDE)", label: "ECE4500J Major Design Experience(MDE)" },
-  { id: "Design and Manufacturing III", label: "ME4500J Design and Manufacturing III" },
-  { id: "Product Design and Manufacturing", label: "MSE4500J Product Design and Manufacturing" },
+  {
+    id: "Major Design Experience(MDE)",
+    label: "ECE4500J Major Design Experience(MDE)",
+  },
+  {
+    id: "Design and Manufacturing III",
+    label: "ME4500J Design and Manufacturing III",
+  },
+  {
+    id: "Product Design and Manufacturing",
+    label: "MSE4500J Product Design and Manufacturing",
+  },
   { id: "Laboratory II", label: "ME4950J Laboratory II" },
   { id: "VLSI Design", label: "ECE4270J VLSI Design" },
   { id: "Computer Architecture", label: "ECE4700J Computer Architecture" },
-  { id: "App Development for Entrepreneurs", label: "ECE4410J App Development for Entrepreneurs" },
-  { id: "Advanced Embedded System", label: "ECE4730J Advanced Embedded System" },
+  {
+    id: "App Development for Entrepreneurs",
+    label: "ECE4410J App Development for Entrepreneurs",
+  },
+  {
+    id: "Advanced Embedded System",
+    label: "ECE4730J Advanced Embedded System",
+  },
 ] as const;
 
 const semesters = [
@@ -143,7 +162,10 @@ const semesters = [
   { id: "19SU", label: "2019 Summer" },
 ] as const;
 
-const Checkboxes: React.FC<{ checkedCourses: string[]; setCheckedCourses: React.Dispatch<React.SetStateAction<string[]>> }> = ({ checkedCourses, setCheckedCourses }) => {
+const Checkboxes: React.FC<{
+  checkedCourses: string[];
+  setCheckedCourses: React.Dispatch<React.SetStateAction<string[]>>;
+}> = ({ checkedCourses, setCheckedCourses }) => {
   const handleCheckboxChange = (id: string) => {
     setCheckedCourses((prev) =>
       prev.includes(id) ? prev.filter((course) => course !== id) : [...prev, id]
@@ -173,12 +195,20 @@ const Checkboxes: React.FC<{ checkedCourses: string[]; setCheckedCourses: React.
 
 type SliderSemesterProps = React.ComponentProps<typeof Slider>;
 
-const SliderSemester: React.FC<SliderSemesterProps & { semesterRange: number[]; setSemesterRange: (range: number[]) => void }> = ({
+const SliderSemester: React.FC<
+  SliderSemesterProps & {
+    semesterRange: number[];
+    setSemesterRange: (range: number[]) => void;
+  }
+> = ({
   className,
   semesterRange,
   setSemesterRange,
   ...props
-}: SliderSemesterProps & { semesterRange: number[]; setSemesterRange: (range: number[]) => void }) => {
+}: SliderSemesterProps & {
+  semesterRange: number[];
+  setSemesterRange: (range: number[]) => void;
+}) => {
   return (
     <Card>
       <CardHeader>Select Semester Range</CardHeader>
@@ -212,7 +242,9 @@ const SearchPanel: React.FC = () => {
   const [data, setData] = useState<CapstoneProject[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [checkedCourses, setCheckedCourses] = useState<string[]>(courses.map(course => course.id)); // Default all checked
+  const [checkedCourses, setCheckedCourses] = useState<string[]>(
+    courses.map((course) => course.id)
+  ); // Default all checked
   const [semesterRange, setSemesterRange] = useState<number[]>([1, 5]);
   const [searchText, setSearchText] = useState<string>(""); // Text search state
   const projectsPerPage = 3;
@@ -222,7 +254,9 @@ const SearchPanel: React.FC = () => {
     setLoading(true);
     setError(null);
 
-    const selectedSemesters = semesters.slice(semesterRange[0] - 1, semesterRange[1]).map(semester => semester.label);
+    const selectedSemesters = semesters
+      .slice(semesterRange[0] - 1, semesterRange[1])
+      .map((semester) => semester.label);
 
     const requestData = {
       courses: checkedCourses.length > 0 ? checkedCourses : [], // Ensure empty array if no courses are checked
@@ -231,7 +265,10 @@ const SearchPanel: React.FC = () => {
     };
 
     try {
-      const response = await axios.post("http://123.57.48.172:5000/list", requestData);
+      const response = await axios.post(
+        "http://123.57.48.172:5000/list",
+        requestData
+      );
       setData(response.data.list || []);
       setError(null);
     } catch (err: any) {
@@ -256,23 +293,32 @@ const SearchPanel: React.FC = () => {
   return (
     <div className="m-4 gap-4">
       <div className="grid grid-cols-2 gap-4">
-        <Checkboxes checkedCourses={checkedCourses} setCheckedCourses={setCheckedCourses} />
-        <SliderSemester semesterRange={semesterRange} setSemesterRange={setSemesterRange} />
-      </div>
-      <div className="mt-4 mx-auto w-1/2">
-        <Input 
-          type="text" 
-          placeholder="Search projects..." 
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)} 
-          className="w-full p-2 border rounded"
+        <Checkboxes
+          checkedCourses={checkedCourses}
+          setCheckedCourses={setCheckedCourses}
+        />
+        <SliderSemester
+          semesterRange={semesterRange}
+          setSemesterRange={setSemesterRange}
         />
       </div>
-      <div className="flex justify-end my-6">
-        <Button onClick={handleSearch} disabled={loading || checkedCourses.length === 0}>
+      <CardFooter className="m-4 gap-4 ">
+        <Input
+          type="text"
+          placeholder="Search anything about projects..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className="w-full p-2 border rounded"
+        />{" "}
+        <Button
+          onClick={handleSearch}
+          disabled={loading || checkedCourses.length === 0}
+          className="w-full"
+        >
           {loading ? "Searching..." : "Search"}
         </Button>
-      </div>
+      </CardFooter>
+      <div className="flex justify-end my-6"></div>
       <Separator className="mt-4" />
       <Card className="m-4 gap-4">
         <CardContent>

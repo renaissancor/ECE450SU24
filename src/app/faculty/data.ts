@@ -1,4 +1,5 @@
 export interface Professor {
+  id?: string;
   name: string;
   title: string;
   office: string;
@@ -9,6 +10,7 @@ export interface Professor {
 
 export const professors: Professor[] = [
   {
+    id: "75745",
     name: "Yutong Ban",
     title: "Assistant Professor",
     office: "JI 504",
@@ -17,6 +19,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "24",
     name: "Youyi Bi",
     title: "Assistant Professor",
     office: "JI 530",
@@ -25,6 +28,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "67506",
     name: "Runze Cai",
     title: "Assistant Teaching Professor",
     office: "JI 441B",
@@ -33,6 +37,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "26",
     name: "Michele Campbell",
     title: "Assistant Teaching Professor",
     office: "JI 435B",
@@ -41,6 +46,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "76",
     name: "Manuel Charlemagne",
     title: "Associate Teaching Professor",
     office: "JI 437A",
@@ -49,6 +55,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "77",
     name: "Chien-Pin Chen",
     title: "Dean Professor",
     office: "JI 400A",
@@ -57,6 +64,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "78",
     name: "Qianli Chen",
     title: "Associate Professor",
     office: "JI 540",
@@ -65,6 +73,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "83",
     name: "Sung-Liang Chen",
     title: "Associate Professor",
     office: "JI 428",
@@ -73,6 +82,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "3114",
     name: "En-Ling Chiao",
     title: "Assistant Teaching Professor",
     office: "JI 405A",
@@ -81,6 +91,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "1405",
     name: "Yuljae Cho",
     title: "Associate Professor",
     office: "JI 544",
@@ -89,6 +100,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "38214",
     name: "Mo-Yuen Chow",
     title: "Professor",
     office: "JI 416 SEIEE",
@@ -97,6 +109,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "86",
     name: "Yaping Dan",
     title: "Professor",
     office: "JI 516",
@@ -105,6 +118,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "89",
     name: "Yunlong Guo",
     title: "Associate Professor",
     office: "JI 510",
@@ -113,6 +127,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "28808",
     name: "Xinfei Guo",
     title: "Associate Professor",
     office: "JI 419",
@@ -121,6 +136,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "90",
     name: "Chong Han",
     title: "Associate Professor",
     office: "JI 408 SEIEE",
@@ -129,6 +145,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "32620",
     name: "Yulian He",
     title: "Assistant Professor",
     office: "JI 523 SCCE",
@@ -137,6 +154,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "91",
     name: "Horst Hohberger",
     title: "Teaching Professor",
     office: "JI 441C",
@@ -145,6 +163,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "92",
     name: "Peisen Huang",
     title: "Professor",
     office: "JI 569",
@@ -153,6 +172,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "93",
     name: "David Hung",
     title: "Associate Dean Professor",
     office: "JI 400B",
@@ -161,6 +181,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "72222",
     name: "Hongmei Jiang",
     title: "Assistant Research Professor",
     office: "JI 208",
@@ -169,6 +190,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "25039",
     name: "Li Jin",
     title: "Associate Professor, JI; Associate Professor, SEIEE",
     office: "JI 424",
@@ -177,6 +199,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "95",
     name: "Shane Johnson",
     title: "Associate Professor, JI",
     office: "JI 506",
@@ -185,6 +208,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "96",
     name: "Jaehyung Ju",
     title: "Associate Professor, JI",
     office: "JI 500",
@@ -193,6 +217,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "33585",
     name: "KyungMin Kim",
     title: "Assistant Teaching Professor, JI",
     office: "JI 411B",
@@ -201,6 +226,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "3291",
     name: "Jie Li",
     title: "Professor (Adjunct Appointment)",
     office: "JI 404",
@@ -209,6 +235,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "3755",
     name: "Nana Liu",
     title:
       "Associate Professor, Institute of Natural Sciences; Associate Professor, JI",
@@ -218,6 +245,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Milias Liu",
     title: "Assistant Teaching Professor, JI",
     office: "JI 407A",
@@ -226,6 +254,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Yong Long",
     title: "Associate Professor, JI",
     office: "JI 402",
@@ -234,6 +263,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Xuyang Lu",
     title: "Assistant Professor, JI; Assistant Professor, SEIEE",
     office: "JI 422",
@@ -242,6 +272,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Chengbin Ma",
     title: "Professor",
     office: "JI 420",
@@ -250,6 +281,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Abdelmadjid Mesli",
     title: "Professor (Adjunct Appointment)",
     office: "JI",
@@ -258,6 +290,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Dmytro Mykhailov",
     title: "Assistant Teaching Professor, JI",
     office: "JI 409",
@@ -266,6 +299,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Yibo Pi",
     title: "Assistant Professor, JI",
     office: "JI 417",
@@ -274,6 +308,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Weikang Qian",
     title: "Associate Professor, JI",
     office: "JI 430",
@@ -282,6 +317,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Heng Qiao",
     title: "Assistant Professor, JI",
     office: "JI 438",
@@ -290,6 +326,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Zijie Qu",
     title: "Assistant Professor, JI",
     office: "JI 517",
@@ -298,6 +335,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Pradeep Ray",
     title: "Teaching Professor, JI",
     office: "JI 409B",
@@ -306,6 +344,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Zhongqiang Ren",
     title: "Assistant Professor, JI",
     office: "JI 502",
@@ -314,6 +353,7 @@ export const professors: Professor[] = [
     webpage: null,
   },
   {
+    id: "0",
     name: "Lei Shao",
     title: "Associate Professor, JI",
     office: "JI 542",

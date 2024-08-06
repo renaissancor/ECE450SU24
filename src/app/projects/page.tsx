@@ -16,8 +16,5 @@ import {
 } from "@/components/ui/pagination";
 
 export default function ProjectsPage() {
-  return (
-<div className="flex gap-2">
-</div>
-  );
+  return <div className="flex gap-2"></div>;
 }
