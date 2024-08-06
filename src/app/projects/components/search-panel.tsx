@@ -143,7 +143,7 @@ const semesters = [
   { id: "19SU", label: "2019 Summer" },
 ] as const;
 
-const Checkboxes: React.FC<{ checkedCourses: string[]; setCheckedCourses: (checkedCourses: string[]) => void }> = ({ checkedCourses, setCheckedCourses }) => {
+const Checkboxes: React.FC<{ checkedCourses: string[]; setCheckedCourses: React.Dispatch<React.SetStateAction<string[]>> }> = ({ checkedCourses, setCheckedCourses }) => {
   const handleCheckboxChange = (id: string) => {
     setCheckedCourses((prev) =>
       prev.includes(id) ? prev.filter((course) => course !== id) : [...prev, id]
