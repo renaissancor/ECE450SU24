@@ -15,6 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import ProjectViewCard from "./project-view";
+import { CapstoneProject } from "@/types/types"; // Adjust the import path as needed  
 
 import {
   Pagination,

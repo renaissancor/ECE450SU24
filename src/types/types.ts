@@ -1,29 +1,22 @@
 // Capstone Project Schema
 export interface CapstoneProject {
-  ProjectID: number;
-  Year: number;
-  Semester: number; // (1-FA, 2-SP, 3-SU)
-  ProjectName: string;
-  InstructorID1: number;
-  InstructorID2: number;
-  InstructorID3: number;
-  InstructorID4: number;
-  InstructorID5: number;
-  SponsorID: number;
-  GroupLeaderID: number;
-  GroupMember1: number;
-  GroupMember2: number;
-  GroupMember3: number;
-  GroupMember4: number;
-  Proposal: string;
-  DR1: string;
-  DR2: string;
-  DR3: string;
-  Poster: string;
-  VideoFinalPre: string;
-  VideoExpo: string;
-  Award: "golden" | "silver" | "none";
-  Expense: number;
+  projectid: number; // Adjusted naming to match coding style
+  title: string; // Add title for project name
+  year: number; // Add year
+  semester: string; // Add semester
+  course: string; // Add course
+  sponsor: string; // Add sponsor
+  members: string; // Add members
+  companymentor: string; // Add company mentor
+  instructor: string; // Add instructor
+  problem: string; // Add problem statement
+  concept: string; // Add concept generation
+  description: string; // Add design description
+  analysis: string; // Add modeling and analysis
+  validation: string; // Add validation
+  conclusion: string; // Add conclusion
+  acknowledgement: string; // Add acknowledgement
+  // Add other properties as needed
 }
 
 // Mentor Schema
@@ -54,57 +47,3 @@ interface Student {
   Major: "ME" | "ECE" | "MSE";
   JointProgram: "DD" | "GDP" | "None";
 }
-
-// Example of using these interfaces
-const exampleCapstoneProject: CapstoneProject = {
-  ProjectID: 1,
-  Year: 2023,
-  Semester: 2,
-  ProjectName: "AI Research Project",
-  InstructorID1: 101,
-  InstructorID2: 102,
-  InstructorID3: 103,
-  InstructorID4: 104,
-  InstructorID5: 105,
-  SponsorID: 201,
-  GroupLeaderID: 301,
-  GroupMember1: 302,
-  GroupMember2: 303,
-  GroupMember3: 304,
-  GroupMember4: 305,
-  Proposal: "link-to-proposal",
-  DR1: "link-to-DR1",
-  DR2: "link-to-DR2",
-  DR3: "link-to-DR3",
-  Poster: "link-to-poster",
-  VideoFinalPre: "link-to-video-final-pre",
-  VideoExpo: "link-to-video-expo",
-  Award: "golden",
-  Expense: 1000,
-};
-
-const exampleMentor: Mentor = {
-  MentorID: 1,
-  Name: "Dr. Smith",
-  Type: "university",
-  Company: "JI",
-  Position: "Professor",
-  ContactInfo: "email@example.com",
-};
-
-const exampleCompany: Company = {
-  CompanyID: 1,
-  Name: "Tech Innovations",
-  Country: "USA",
-  LinkToHomePage: "http://tech-innovations.com",
-  Funding: 500000,
-};
-
-const exampleStudent: Student = {
-  StudentID: 1,
-  Name: "John Doe",
-  Country: "USA",
-  Gender: "M",
-  Major: "ME",
-  JointProgram: "DD",
-};
