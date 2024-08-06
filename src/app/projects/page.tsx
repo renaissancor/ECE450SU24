@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Checkboxes from "./components/project-search-panel";
 // import { exampleCapstoneProjects } from "@/data/projects";
 // import Checkboxes from "./components/project-search-panel";
-import { exampleCapstoneProjects } from "@/data/projects";
 import ProjectViewCard from "./components/project-view";
 import { CapstoneProject } from "@/types/types";
-import SearchPanel from "./components/search-panel";
 
 import {
   Pagination,
@@ -153,7 +150,6 @@ export default function ProjectsPage() {
 
   return (
     <div className="grid grid-cols-5 gap-2">
-      <SearchPanel />
       <div className="col-span-4 grid grid-cols-3 m-2 gap-2">
         {currentProjects.map((project: CapstoneProject) => (
           <ProjectViewCard key={project.ProjectID} project={project} />
