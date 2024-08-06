@@ -1,4 +1,4 @@
-import { sponsors, Sponsor } from "@/data/sponsors";
+import { sponsors, Sponsor } from "./data";
 import Image from "next/image";
 import {
   Card,
@@ -12,22 +12,28 @@ import { Button } from "@/components/ui/button";
 
 const SponsorCard = ({ sponsor }: { sponsor: Sponsor }) => {
   return (
-    <Card className="sponsor-card p-4 flex flex-col h-full bg-white">
-      <CardHeader className="flex-grow ">
-        <CardTitle className="text-center text-black mt-4">{`${sponsor.name}`}</CardTitle>
+    <Card className="sponsor-card p-4 flex flex-col h-full">
+      <CardHeader className="flex-grow">
+        <CardTitle className="text-center mt-4">
+          {sponsor.englishName}
+        </CardTitle>
+        <CardTitle className="text-center mt-2 text-sm text-gray-500">
+          {sponsor.chineseName}
+        </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col items-center">
-        {/* Assuming you have images for sponsors named by their id in the public/sponsors directory */}
-        <Image
-          src={`/sponsors/${sponsor.id}.jpg`}
-          alt={sponsor.name}
-          width={200}
-          height={200}
-        />
+      <CardContent className="flex flex-col items-center justify-center flex-grow">
+        <Card className="bg-white p-4 flex items-center justify-center">
+          <Image
+            src={`/sponsors/${sponsor.id}.jpg`}
+            alt={sponsor.englishName}
+            width={200}
+            height={200}
+          />
+        </Card>
       </CardContent>
       <CardFooter>
-        <Link className="w-full" href={`/sponsors/${sponsor.id}`}>
-          <Button className="w-full bg-black text-white">View Details</Button>
+        <Link className="w-full" href={sponsor.website || "#"}>
+          <Button className="w-full">Visit Website</Button>
         </Link>
       </CardFooter>
     </Card>
