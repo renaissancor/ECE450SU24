@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sqlite3
 
@@ -21,7 +21,7 @@ def detail():
     rows = cur.fetchall()
     lst = [dict(zip(columns, row)) for row in rows]
     data = lst[0]
-    return data
+    return jsonify(data)
 
 @app.route('/list', methods=['POST'])
 def projectlist():
@@ -85,7 +85,7 @@ def projectlist():
     # print(lst)
 
     result = {"code": 0, "list": lst}
-    return result
+    return jsonify(result)
 
 @app.route('/total-projects', methods=['GET'])
 def total_projects():
@@ -102,7 +102,7 @@ def projects_2023():
     cur = con.cursor()
     cur.execute("SELECT COUNT(*) FROM project WHERE year = 2023")
     total = cur.fetchone()[0]
-    return {"total_projects": total}
+    return jsonify({"total_projects": total})
 
 @app.route('/joint-institute-projects', methods=['GET'])
 def joint_institute_projects():
@@ -110,7 +110,7 @@ def joint_institute_projects():
     cur = con.cursor()
     cur.execute("SELECT COUNT(*) FROM project WHERE sponsor = 'Joint Institute'")
     total = cur.fetchone()[0]
-    return {"total_projects": total}
+    return jsonify({"total_projects": total})
 
 @app.route('/mde-projects', methods=['GET'])
 def mde_projects():
@@ -118,7 +118,7 @@ def mde_projects():
     cur = con.cursor()
     cur.execute("SELECT COUNT(*) FROM project WHERE course = 'Major Design Experience(MDE)'")
     total = cur.fetchone()[0]
-    return {"total_projects": total}
+    return jsonify({"total_projects": total})
 
 @app.route('/projects-by-semester', methods=['GET'])
 def projects_by_semester():
@@ -146,7 +146,7 @@ def projects_by_semester():
     rows = cur.fetchall()
     data = [{"semester": f"{row[0]} {row[1].upper()}", "total": row[2]} for row in rows]
     
-    return data
+    return jsonify(data)
 
 sponsors = [
     "Bosch (Shanghai) Smart Life Technology Ltd. (RBLC)",
@@ -190,7 +190,7 @@ def projects_by_sponsor():
         count = cur.fetchone()[0]
         data.append({"sponsor": sponsor, "total": count})
 
-    return {"data": data}
+    return jsonify({"data": data})
 
 @app.route('/projects-by-course', methods=['GET'])
 def projects_by_course():
@@ -213,7 +213,7 @@ def projects_by_course():
     
     rows = cur.fetchall()
     data = [{"course": row[0], "total": row[1]} for row in rows]
-    return {"data": data}
+    return jsonify({"data": data})
 
 instructors = [
     "Chong Han",
@@ -253,7 +253,7 @@ def projects_by_instructor():
         count = cur.fetchone()[0]
         data.append({"instructor": instructor, "total": count})
 
-    return {"data": data}
+    return jsonify({"data": data})
 
 if __name__ == '__main__':
     app.run(debug=True) 

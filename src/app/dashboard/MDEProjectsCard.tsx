@@ -7,7 +7,7 @@ const MDEProjectsCard = () => {
   const [mdeProjects, setMdeProjects] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/mde-projects')
+    fetch('http://123.57.48.172:5000/mde-projects')
       .then(response => response.json())
       .then(data => setMdeProjects(data.total_projects))
       .catch(error => console.error('Error fetching MDE projects:', error));

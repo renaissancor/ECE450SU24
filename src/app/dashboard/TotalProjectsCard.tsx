@@ -7,7 +7,7 @@ const TotalProjectsCard = () => {
   const [totalProjects, setTotalProjects] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/total-projects')
+    fetch('http://123.57.48.172:5000/total-projects')
       .then(response => response.json())
       .then(data => setTotalProjects(data.total_projects))
       .catch(error => console.error('Error fetching total projects:', error));

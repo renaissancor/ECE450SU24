@@ -7,7 +7,7 @@ const Projects2023Card = () => {
   const [projects2023, setProjects2023] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/projects-2023')
+    fetch('http://123.57.48.172:5000/projects-2023')
       .then(response => response.json())
       .then(data => setProjects2023(data.total_projects))
       .catch(error => console.error('Error fetching projects for 2023:', error));

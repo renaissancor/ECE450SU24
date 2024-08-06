@@ -7,7 +7,7 @@ const JointInstituteProjectsCard = () => {
   const [jointInstituteProjects, setJointInstituteProjects] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/joint-institute-projects')
+    fetch('http://123.57.48.172:5000/joint-institute-projects')
       .then(response => response.json())
       .then(data => setJointInstituteProjects(data.total_projects))
       .catch(error => console.error('Error fetching Joint Institute projects:', error));

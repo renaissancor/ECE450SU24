@@ -28,7 +28,7 @@ export function Overview() {
 
   const fetchData = () => {
     fetch(
-      `http://127.0.0.1:5000/projects-by-semester?startYear=${startYear}&startSemester=${startSemester}&endYear=${endYear}&endSemester=${endSemester}`
+      `http://123.57.48.172:5000/projects-by-semester?startYear=${startYear}&startSemester=${startSemester}&endYear=${endYear}&endSemester=${endSemester}`
     )
       .then((response) => response.json())
       .then((data: ProjectData[]) => {
