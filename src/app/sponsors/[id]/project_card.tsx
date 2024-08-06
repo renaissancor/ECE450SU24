@@ -12,37 +12,41 @@ interface ProjectIDPageProps {
 }
 
 export default function ProjectIDCard(props: ProjectIDPageProps) {
-  const id = props.id;
+  // const id = props.id;
 
-  if (!id) {
-    return <Card className="text-red-500">Error: Project ID is missing</Card>;
-  }
+  // if (!id) {
+  //   return <Card className="text-red-500">Error: Project ID is missing</Card>;
+  // }
 
-  const project: CapstoneProject | undefined = getProject(id.toString());
+  // const project: CapstoneProject | undefined = getProject(id.toString());
 
-  if (!project) {
+  // if (!project) {
+  //   return (
+  //     <Card>
+  //       <CardHeader>
+  //         <CardTitle>Loading project details...</CardTitle>
+  //       </CardHeader>
+  //     </Card>
+  //   );
+  // }
+
+  // return (
+  //   <Card id={id.toString()} className="p-8 max-w-4xl mx-auto">
+  //     <CardHeader className="mb-4">
+  //       <CardTitle className="text-4xl font-bold mb-4">
+  //         {project.title}
+  //       </CardTitle>
+  //     </CardHeader>
+  //     <Separator />
+  //     <CardFooter className="mb-4">
+  //       <Link className="w-full" href={`/project/${project.projectid}`}>
+  //         <Button className="w-full">View Details</Button>
+  //       </Link>
+  //     </CardFooter>
+  //   </Card>
+  // );
+
     return (
-      <Card>
-        <CardHeader>
-          <CardTitle>Loading project details...</CardTitle>
-        </CardHeader>
-      </Card>
-    );
-  }
-
-  return (
-    <Card id={id.toString()} className="p-8 max-w-4xl mx-auto">
-      <CardHeader className="mb-4">
-        <CardTitle className="text-4xl font-bold mb-4">
-          {project.ProjectName}
-        </CardTitle>
-      </CardHeader>
-      <Separator />
-      <CardFooter className="mb-4">
-        <Link className="w-full" href={`/project/${project.ProjectID}`}>
-          <Button className="w-full">View Details</Button>
-        </Link>
-      </CardFooter>
-    </Card>
+    <div></div>
   );
 }
